@@ -1,11 +1,15 @@
 import React from "react";
-
+//import { Link } from "react-router-dom";
 
 function Home(props) {
   return (
     <div>
-      {props.label && <label>{props.label}</label>}
-      <h2>{ props.name ? `Welcome - ${props.name}` : "Login please"}</h2>
+      
+      <br />
+      <br />
+      <br />
+
+      <h2>{props.name ? `Welcome - ${props.name}` : "Login please"}</h2>
     </div>
   );
 }
