@@ -9,9 +9,14 @@ import styles from "./Signup.module.css";
 
 function Signup() {
   const navigate = useNavigate();
+
+  
+
+  const allowedDomains = ['ug.cusat.ac.in', 'pg.cusat.ac.in'];
   const [values, setValues] = useState({
     name: "",
     email: "",
+    
     pass: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
@@ -23,7 +28,12 @@ function Signup() {
       return;
     }
     setErrorMsg("");
-
+    const emailParts = values.email.split('@');
+    const emailDomain = emailParts[1];
+    if (!allowedDomains.includes(emailDomain)) {
+      alert('Invalid email domain!');
+      return;
+    }
     setSubmitButtonDisabled(true);
     createUserWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
@@ -60,6 +70,7 @@ function Signup() {
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
         />
+        
         <InputControl
           label="Password"
           placeholder="Enter password"
