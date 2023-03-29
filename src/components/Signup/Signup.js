@@ -12,11 +12,10 @@ function Signup() {
 
   
 
-  const allowedDomains = ['ug.cusat.ac.in', 'pg.cusat.ac.in'];
+  const allowedDomains = ['ug.cusat.ac.in', 'pg.cusat.ac.in','cusat.ac.in'];
   const [values, setValues] = useState({
     name: "",
     email: "",
-    
     pass: "",
   });
   const [errorMsg, setErrorMsg] = useState("");

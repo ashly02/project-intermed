@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+
+import Header from "./components/Home/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
@@ -25,7 +27,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-         <Route path="/Home" element={<Home name={userName} />} /> 
+          <Route path="/home" element={
+          <div><Header/><Home/>
+          </div>}>
+            </Route>
         
         </Routes>
       </Router>
