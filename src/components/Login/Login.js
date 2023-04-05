@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
+import  {connect} from "react-redux";
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
-
+import { signInAPI } from "../../actions";
 import styles from "./Login.module.css";
 import logo from './logo.png';
 function Login() {
@@ -76,4 +76,12 @@ function Login() {
   );
 }
 
-export default Login;
+const mapStateToProps=(state)=>{
+  return{
+    user:state.userState.user,
+  };
+};
+const mapDispatchToProps=(dispatch)=>({
+  signIn:()=>dispatch(signInAPI()),
+});
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

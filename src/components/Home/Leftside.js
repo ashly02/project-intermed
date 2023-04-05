@@ -33,6 +33,7 @@ const Leftside = (props) => {
 
 const Container = styled.div`
   grid-area: leftside;
+  
 `;
 
 const ArtCard = styled.div`
@@ -49,7 +50,7 @@ const ArtCard = styled.div`
 
 const UserInfo = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 12px 12px 16px;
+  padding: 14px 14px 10px;
   word-wrap: break-word;
   word-break: break-word;
 `;

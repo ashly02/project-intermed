@@ -19,7 +19,6 @@ const Home = (props) => {
 };
 
 const Container = styled.div`
-  padding-top: 52px;
   max-width: 100%;
 `;
 
