@@ -1,6 +1,7 @@
 import {auth,provider,storage} from "../firebase";
 import {db} from '../firebase';
 import { SET_USER } from "./actionType";
+
 export const setUser=(payload)=>({
     type:SET_USER,
     user:payload,
@@ -64,7 +65,7 @@ export function postArticleAPI(payload){
                     actor:{
                         description:payload.user.email,
                         title:payload.user.displayName,
-                        date:payload.user.timestamp,
+                        date:payload.timestamp,
                         image:payload.user.photoURL,
                     },
                     video:payload.video,
