@@ -24,7 +24,7 @@ const Header = (props) => {
             <NavList className="active">
               <a>
                 <img src="/images/nav-home.svg" alt="" />
-                <span>Home</span>
+                <button className='b'>Home</button>
               </a>
             </NavList>
 
@@ -32,7 +32,7 @@ const Header = (props) => {
             <NavList>
               <a>
                 <img src="/images/nav-messaging.svg" alt="" />
-                <span>Messaging</span>
+                <button className="b">Messaging</button>
               </a>
             </NavList>
 
@@ -134,6 +134,11 @@ const Nav = styled.nav`
     background: white;
     width: 100%;
   }
+  .b{
+    background-color:white;
+    border:none;
+    cursor:pointer;
+  }
 `;
 
 const NavListWrap = styled.ul`
@@ -172,10 +177,11 @@ const NavList = styled.li`
     position: relative;
     text-decoration: none;
     cursor:pointer;
-    span {
+    button {
       color: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
+      
     }
     @media (max-width: 768px) {
       min-width: 70px;
