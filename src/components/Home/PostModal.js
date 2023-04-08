@@ -51,6 +51,7 @@ const PostModal = (props) => {
         setVideoLink("");
         setAssetArea("");
         props.handleClick(e);
+        props.handlePost(e);
     };
 
     return (  
@@ -230,12 +231,14 @@ const AssetButton=styled.div`
       width:48px;
       margin-right:20px;
       margin-left:13px; 
+      cursor: pointer;
     }
     .postvid{
       display:flex;
       width:48px;
       margin-right:20px;
-      margin-left:30px; 
+      margin-left:30px;
+      cursor: pointer; 
     }
 `;
 const AttachAssets=styled.div`

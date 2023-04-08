@@ -16,6 +16,7 @@ const Main = (props) => {
     if(e.target!==e.currentTarget){
       return;
     }
+    
 
 
     switch(showModal){
@@ -50,11 +51,21 @@ const Main = (props) => {
       <div>
         <button>
           <img src="/images/photo-icon.svg" className="feed-images" alt=""/>
-          <span>Photo</span>
+          <button onClick={handleClick}
+                  disabled={props.loading ? true:false}
+                  className="uploading"
+          >
+               Photo
+          </button>
         </button>
         <button>
           <img src="/images/video-icon.svg" className="feed-images" alt=""/>
-          <span>Video</span>
+          <button onClick={handleClick}
+                  disabled={props.loading ? true:false}
+                  className="uploading"
+          >
+               Video
+          </button>
         </button>
         <button>
           <img src="/images/event-icon.svg" className="feed-images" alt=""/>
@@ -106,7 +117,7 @@ const Main = (props) => {
             </li>
             <li>
               <a>
-                {article.comments}
+                {article.comments} Comments
               </a>
               </li>
           </SocialCounts>
@@ -193,8 +204,9 @@ const ShareBox=styled(CommonCard)`
         img{
           margin:0 4px 0 -2px;
         }
-        span{
+        span,.uploading{
           color:#70b5f9;
+          cursor:pointer;
         }
       }
     }
