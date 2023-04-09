@@ -10,8 +10,9 @@ import 'firebase/compat/firestore';
 const PostModal = (props) => {
     const [editorText,setEditorText]=useState("");
     const [shareImage,setShareImage]=useState("");
-    const [videoLink,setVideoLink]=useState("");
+    
     const [assetArea,setAssetArea]=useState("");
+    const [videoUrl, setVideoUrl] = useState("");
 
     const handleChange=(e)=>{
         const image=e.target.files[0];
@@ -22,10 +23,14 @@ const PostModal = (props) => {
         }
         setShareImage(image);
     };
-
+    const handleVideo = (event) => {
+        const selectedFile = event.target.files[0];
+        setVideoUrl(URL.createObjectURL(selectedFile));
+      };
+    
     const switchAssetArea=(area)=>{
         setShareImage("");
-        setVideoLink("");
+        setVideoUrl("");
         setAssetArea(area);
     };
     const postArticle=(e)=>{
@@ -36,7 +41,7 @@ const PostModal = (props) => {
         }
         const payload={
             image:shareImage,
-            video:videoLink,
+            video:videoUrl,
             user:props.user,
             description:editorText,
             timestamp : Date.now(),
@@ -48,7 +53,7 @@ const PostModal = (props) => {
     const reset=(e)=>{
         setEditorText("");
         setShareImage("");
-        setVideoLink("");
+        setVideoUrl("");
         setAssetArea("");
         props.handleClick(e);
         props.handlePost(e);
@@ -98,16 +103,23 @@ const PostModal = (props) => {
                         </UploadImage>
                         :
                         assetArea==='media' &&
-                        <>
-                        <input type="text" 
-                        placeholder='Please input a video link'
-                        value={videoLink}
-                        onChange={(e)=>setVideoLink(e.target.value)}
+                        <UploadVideo>
+                        <input 
+                        type="file" 
+                        name="media"
+                        id="file"
+                        style={{display:"none"}}
+                        onChange={handleVideo}
                         />
-                        {videoLink && (
-                        <ReactPlayer width={'100%'} url={videoLink}/>
+                        <p>
+                            <label htmlFor="file" >
+                                 Select a video to share
+                            </label>
+                        </p>
+                        {videoUrl && (
+                        <ReactPlayer  width={'100%'}  height={'100%'} url={videoUrl} controls={true} playsinline/>
                         )}
-                        </>
+                        </UploadVideo>
                     }
                     
                     </Editor>
@@ -299,6 +311,9 @@ const UploadImage=styled.div`
     }
 `;
 
+const UploadVideo=styled.div`
+    text-align:center;
+    `;
 const mapStateToProps=(state)=>{
     return{
         user:state.userState.user,
