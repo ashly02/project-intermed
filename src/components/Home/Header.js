@@ -1,33 +1,118 @@
 import styled from "styled-components";
-import {connect} from 'react-redux';
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { signOutAPI } from "../../actions";
+import "./Home.css";
+import { useUser } from "../../Context/UserContext";
 
-const Header = (props) => { 
+const Header = (props) => {
+  // const data = [
+  //   {
+  //     name: "Rahul",
+  //     intrest: "web development",
+  //     country: "Nigeria",
+  //     language: "English",
+  //     year: 1958,
+  //   },
+  //   {
+  //     name: "Ganesh",
+  //     intrest: "web development",
+  //     country: "Nigeria",
+  //     language: "English",
+  //     year: 1958,
+  //   },
+  //   {
+  //     name: "Althaf",
+  //     intrest: "web development",
+  //     country: "Nigeria",
+  //     language: "English",
+  //     year: 1958,
+  //   },
+  //   {
+  //     name: "Sabir",
+  //     intrest: "web development",
+  //     country: "Nigeria",
+  //     language: "English",
+  //     year: 1958,
+  //   },
+  // ];
+
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const { fetchDetails, data } = useUser();
+  console.log(data);
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+
+    setWordEntered(searchWord);
+
+    const newFilter = data.filter((value) => {
+      return value.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+
+    return () => {
+      data.splice(0, data.length);
+    };
+  }, []);
+
   return (
     <Container>
       <Content>
-      <Logo>
+        <Logo>
           <a href="/home">
             <img src="/images/cusatconnects.svg" alt="" />
           </a>
         </Logo>
-        <Search>
+        <Search className="search">
           <div>
-            <input type="text" placeholder="Search" />
+            <div>
+              <input
+                type="text"
+                placeholder="Search"
+                value={wordEntered}
+                onChange={handleFilter}
+              />
+            </div>
+            <SearchIcon>
+              <img src="/images/search-icon.svg" alt="" />
+            </SearchIcon>
+            {filteredData.length !== 0 && (
+              <div className="data-window">
+                {filteredData.slice(0, 15).map((value) => {
+                  return (
+                    <div className="window-box">
+                      <p
+                        className="window-col"
+                        onClick={(e) => console.log(e.target.textContent)}>
+                        {value}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
-          <SearchIcon>
-            <img src="/images/search-icon.svg" alt="" />
-          </SearchIcon>
         </Search>
         <Nav>
           <NavListWrap>
             <NavList className="active">
               <a>
                 <img src="/images/nav-home.svg" alt="" />
-                <button className='b'>Home</button>
+                <button className="b">Home</button>
               </a>
             </NavList>
-
 
             <NavList>
               <a>
@@ -41,16 +126,14 @@ const Header = (props) => {
                 <img src="/images/user.svg" alt="" />
                 <span>
                   Me
-                <img src="/images/down-icon.svg" alt="" />
+                  <img src="/images/down-icon.svg" alt="" />
                 </span>
               </a>
 
-              <SignOut onClick={()=>props.signOut()}>
+              <SignOut onClick={() => props.signOut()}>
                 <a>Sign Out</a>
               </SignOut>
             </User>
-
-          
           </NavListWrap>
         </Nav>
       </Content>
@@ -59,8 +142,8 @@ const Header = (props) => {
 };
 
 const Container = styled.div`
-  background:#fff;
-  
+  background: #fff;
+
   border-bottom: 1px solid rgba(0.2, 0.2, 0.2, 0.08);
   border-radius: 10px;
   left: 10;
@@ -68,9 +151,8 @@ const Container = styled.div`
   position: fixed;
   top: 10;
   width: 96vw;
-  right:10;
+  right: 10;
   z-index: 100;
-  
 `;
 
 const Content = styled.div`
@@ -79,6 +161,7 @@ const Content = styled.div`
   margin: 0 auto;
   min-height: 100%;
   max-width: 1128px;
+  position: relative;
 `;
 
 const Logo = styled.span`
@@ -134,10 +217,10 @@ const Nav = styled.nav`
     background: white;
     width: 100%;
   }
-  .b{
-    background-color:white;
-    border:none;
-    cursor:pointer;
+  .b {
+    background-color: white;
+    border: none;
+    cursor: pointer;
   }
 `;
 
@@ -176,12 +259,11 @@ const NavList = styled.li`
     min-width: 180px;
     position: relative;
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
     button {
       color: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
-      
     }
     @media (max-width: 768px) {
       min-width: 70px;
@@ -229,17 +311,17 @@ const User = styled(NavList)`
       align-items: center;
       display: flex;
       justify-content: center;
-      cursor:pointer;
+      cursor: pointer;
     }
   }
 `;
-const mapStateToProps=(state)=>{
-  return{
-    user:state.userState.user,
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
   };
-}
+};
 
-const mapDispatchToProps=(dispatch)=>({
-  signOut:()=>dispatch(signOutAPI()),
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(signOutAPI()),
 });
-export default connect(mapStateToProps,mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
