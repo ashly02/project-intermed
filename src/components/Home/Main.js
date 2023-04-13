@@ -6,6 +6,8 @@ import { getArticlesAPI } from "../../actions";
 import ReactPlayer from "react-player";
 const Main = (props) => {
   const [showModal,setShowModal]=useState("close");
+ 
+ 
 
   useEffect(()=>{
     props.getArticles();
@@ -17,8 +19,6 @@ const Main = (props) => {
       return;
     }
     
-
-
     switch(showModal){
       case "open":
         setShowModal("close");
@@ -32,6 +32,7 @@ const Main = (props) => {
         
     }
   }
+ 
   return( 
     <>
     
@@ -81,8 +82,10 @@ const Main = (props) => {
       {
         props.loading && <img src='./images/spin-loader.svg'/>
       }
-    {props.articles.length>0 &&
+    {
+    props.articles.length>0 &&
     props.articles.map((article,key)=>(
+      
       <Article key={key}>
         <SharedActor>
           <a>
@@ -99,8 +102,10 @@ const Main = (props) => {
           </Description>
           <SharedImg>
             <a>
+            
               {
-                !article.shareImg && article.video ? (<ReactPlayer width={'100%'} height={'50%'} url={article.video} controls={true} />
+                
+                !article.shareImg && article.video ? (<ReactPlayer width={'100%'} height={'50%'} url={article.video} controls={true}  />
                 ):(
                   article.shareImg && <img src={article.shareImg}/>
                 )

@@ -1,6 +1,9 @@
+import { useState } from "react";
 import {auth,provider,storage} from "../firebase";
 import {db} from '../firebase';
 import { SET_USER,SET_LOADING_STATUS,GET_ARTICLES } from "./actionType";
+
+
 
 export const setUser=(payload)=>({
     type:SET_USER,
@@ -90,24 +93,47 @@ export function postArticleAPI(payload){
             }
             );
         } else if(payload.video){
-            db.collection('articles').add({
-                actor:{
-                    description:payload.user.email,
-                    title:payload.user.displayName,
-                    date:payload.timestamp,
-                    image:payload.user.photoURL,
-                },
-                video:payload.video,
-                shareImg:"",
-                comments:0,
-                description:payload.description,
-            });
-            dispatch(setLoading(false));
-        }
-    };
+            const upload=storage
+            .ref(`video/${payload.video.name}`)
+            .put(payload.video);
+        upload.on(
+            "state_changed",
+        (snapshot)=>{
+            const progress=
+                (snapshot.bytesTransferred/snapshot.totalBytes)*100;            
+            
+            console.log(`Progress:${progress}%`);
+            if(snapshot.state==='RUNNING'){
+                console.log(`Progress: ${progress}%`);
+            }
+            },
+            (error)=>console.log(error.code),
+            async()=>{
+                const downloadURL=await upload.snapshot.ref.getDownloadURL();
+             await  db.collection("articles").add({
+                    actor:{
+                        description:payload.user.email,
+                        title:payload.user.displayName,
+                        date:payload.timestamp,
+                        image:payload.user.photoURL,
+                        video:downloadURL,
+                    },
+                   // video:payload.video,
+                    shareImg:"",
+                    comments:0,
+                    description:payload.description,
+                });
+                dispatch(setLoading(false));
+            }
+            );
+        };
+           
+        
+    }
 }
 
 export function getArticlesAPI(){
+    
     return(dispatch)=>{
         let payload;
 
@@ -115,7 +141,10 @@ export function getArticlesAPI(){
           .orderBy('actor.date','desc')
           .onSnapshot((snapshot)=>{
             payload=snapshot.docs.map((doc)=>doc.data());
+          
+          
             dispatch(getArticles(payload));
+            console.log(payload);
         });
     };
 }
