@@ -15,7 +15,7 @@ const Home = (props) => {
       <Layout>
         
         <Leftside />
-        <Main />
+        <Main props={props} />
       </Layout>
 
     </Container>

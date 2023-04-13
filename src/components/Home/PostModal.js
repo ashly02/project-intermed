@@ -25,7 +25,7 @@ const PostModal = (props) => {
     };
     const handleVideo = (event) => {
         const selectedFile = event.target.files[0];
-        setVideoUrl(URL.createObjectURL(selectedFile));
+        setVideoUrl(selectedFile);
       };
     
     const switchAssetArea=(area)=>{
