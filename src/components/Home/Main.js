@@ -74,7 +74,7 @@ const Main = (props) => {
               <img
                 src="/images/video-icon.svg"
                 className="feed-images"
-                alt=""
+                alt="image"
               />
               <button
                 onClick={handleClick}
