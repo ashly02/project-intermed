@@ -36,8 +36,6 @@ const Main = (props) => {
   const deletePost = (id) => {
     deleteDoc(doc(db, "articles", id));
   };
-
-  
   
 
   const handleClick=(e)=>{
