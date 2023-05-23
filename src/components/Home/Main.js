@@ -125,7 +125,7 @@ const Main = (props) => {
                 <EditModel>
                   
                     <li onClick={() => deletePost(article.id)}>
-                      <img src="/images/delete.svg" alt="" />
+                      <img src="/images/delete.webp" alt="" />
                       <h6>Delete post</h6>
                     </li>
                 </EditModel>
@@ -154,7 +154,7 @@ const Main = (props) => {
                   />
                 )}
                 <span className="likes">
-                {article.likes.length} {article.likes.length === 1 ? "like • " : "likes •"}
+                {article.likes.length} {article.likes.length === 1 ? " like • " : " likes •"}
                 </span>
               </li>
               <li onClick={() => setShowComments((prev) => [...prev, article.id])}>
@@ -409,6 +409,7 @@ border-bottom:1px solid #e9e5df;
 list-style:none;
 .likes{
   justify-content:flex-start;
+  margin-right:5px;
 }
 
 li{
