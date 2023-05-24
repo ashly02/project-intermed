@@ -84,7 +84,7 @@ const PostModal = (props) => {
                 </Header>
                 <ShareContent>
                     <UserInfo>
-                        {props.user.photoURL ? (<img src={props.user.photoURL}/>)
+                        {props.user.photoURL ? (<img src={props.user.photoURL} alt=""/>)
                         :(<img src="/images/user.svg" alt=""/>)
                         }
                         <span>{props.user.displayName}</span>
@@ -111,7 +111,7 @@ const PostModal = (props) => {
         <label htmlFor="file">
         Select an image to share</label>
     </p>
-    {shareImage && <img src={URL.createObjectURL(shareImage)}/>}
+    {shareImage && <img src={URL.createObjectURL(shareImage)} alt=""/>}
     </UploadImage>
     :
     assetArea==='media' &&
@@ -272,16 +272,7 @@ ${AssetButton}{
 }
 `;
 
-const ShareComment=styled.div`
-padding-left:8px;
-margin-right:auto;
-border-left:1px solid rgba(0,0,0,0.15);
-${AssetButton}{
-    svg{
-        margin-right:5px;
-    }
-}
-`;
+
 
 const PostButton=styled.button`
     min-width:60px;
