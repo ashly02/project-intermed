@@ -96,7 +96,10 @@ const Main = (props) => {
         </button>
         <button>
           <img src="/images/poll-icon.svg" className="feed-images" alt=""/>
-          <span>Poll</span>
+          <button className="uploading"
+          >
+               Poll
+          </button>
         </button>
       </div>
     </ShareBox>
@@ -262,10 +265,10 @@ const ShareBox=styled(CommonCard)`
       padding-bottom:4px;
       button{
         img{
-          margin:0 4px 0 -2px;
+          margin:0 0 0 -2px;
         }
         span,.uploading{
-          color:#70b5f9;
+          color:#502780;
           cursor:pointer;
         }
       }
@@ -275,8 +278,10 @@ const ShareBox=styled(CommonCard)`
       width:28px;
       margin-right:8px;
     }
+    
  }
   `;
+
 const Article=styled(CommonCard)`
 padding:0;
 margin:0 0 8px;
