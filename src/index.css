@@ -3,7 +3,7 @@
 body,
 html{
 
-  background: linear-gradient(to left top, rgb(255, 255, 255), rgba(115, 62, 201, 0.4));
+  background: linear-gradient(to left top, rgb(253, 242, 254), rgba(115, 62, 201, 0.4));
   height: 100%;
   margin: 0;
   overflow-y: scroll;

@@ -198,7 +198,7 @@ const Container = styled.div`
   padding: 0 24px;
   position: relative;
   top: 20;
-  width: 94vw;
+  width: 94%;
   right:20;
   z-index: 100;
   
@@ -258,7 +258,7 @@ const SearchIcon = styled.div`
 const Nav = styled.nav`
   margin-left: auto;
   display: block;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     position: fixed;
     left: 0;
     bottom: 0;

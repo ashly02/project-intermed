@@ -2,7 +2,7 @@
   min-height: 100vh;
   min-width: 100vw;
   overflow-x: hidden;
-  background: linear-gradient(to right, #ebe9e9 50%, #502780 50%);
+  background: linear-gradient(to right, #f4f4f4 50%, #502780 50%);
   
 }
 .main-signup .signup-container {
