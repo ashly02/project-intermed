@@ -227,7 +227,7 @@ const Search = styled.div`
       border: none;
       box-shadow: none;
       background-color: #dce6f1;
-      border-radius: 2px;
+      border-radius: 5px;
       color: rgba(0, 0, 0, 0.9);
       width: 218px;
       padding: 0 8px 0 40px;
