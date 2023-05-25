@@ -279,10 +279,10 @@ const PostButton=styled.button`
     border-radius:20px;
     padding-left:16px;
     padding-right:16px;
-    background:${(props) => (props.disabled ? "rgba(0,0,0,0.8)" : "#0a66c2")};
+    background:${(props) => (props.disabled ? "rgba(0,0,0,0.8)" : "#7133d6")};
     color:${(props) => (props.disabled ? "rgba(1,1,1,0.2)" : "white")};
     &:hover{
-        background:${(props) => (props.disabled ? "rgba(0,0,0,0.08)" : "#004182")};
+        background:${(props) => (props.disabled ? "rgba(0,0,0,0.08)" : "#4e278f")};
     }
 `;
 
