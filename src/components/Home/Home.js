@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Leftside from "./Leftside";
 import Main from "./Main";
-import { Navigate } from "react-router-dom";
+
 import {connect} from "react-redux";
 
 
 const Home = (props) => {
   return (
     <Container>
-      {!props.user && <Navigate to='../'/>}
+      
       <Section>
       </Section>
       <Layout>
