@@ -12,6 +12,15 @@ import "./Home.css";
 import { useUser } from "../../context/AuthContext";
 
 const Header = (props) => { 
+  const handleSignOut = async () => {
+    try {
+      // Perform sign-out logic here
+      await props.signOut();
+    } catch (error) {
+      // Handle any error that occurred during sign-out
+      console.log(error);
+    }
+  };
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -175,8 +184,9 @@ const Header = (props) => {
                 </span>
               </a>
 
-              <SignOut onClick={()=>props.signOut()}>
-                <a>Sign Out</a>
+              <SignOut >
+              <Link to="/" onClick={handleSignOut}>Sign Out</Link>
+                
               </SignOut>
             </User>
 
