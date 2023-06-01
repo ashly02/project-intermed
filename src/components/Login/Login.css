@@ -191,16 +191,14 @@
     padding-right: 30px; /* Adjust the padding as needed */
   }
   
-  .password-toggle-container {
-    position: absolute;
-    top: 50%;
-    right: 5px;
-    transform: translateY(-50%);
-  }
-  
-  .password-toggle-image {
+  .main-login .login-container .left-side .password-toggle-image {
     width: 20px;
     height: 20px;
+    position: absolute;
+    top: 50%;
+    left:65%;
+    right: 58%;
+    transform: translateY(-50%);
     cursor: pointer;
   }
   

@@ -192,7 +192,7 @@ width:170px;
   height: 20px;
   position: absolute;
   top: 50%;
-  right: 50px;
+  left:50%;
   transform: translateY(-50%);
   cursor: pointer;
 }

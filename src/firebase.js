@@ -5,12 +5,12 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDoWdOBJjYoejNoTNHqHdEgFFcDqC8tirc",
-  authDomain: "cusat-jn.firebaseapp.com",
-  projectId: "cusat-jn",
-  storageBucket: "cusat-jn.appspot.com",
-  messagingSenderId: "31443014638",
-  appId: "1:31443014638:web:d09f3b1997160f26f674ff"
+  apiKey: "AIzaSyB_0AehHIUusUTeUto7hhfEMEY4HoV7oho",
+  authDomain: "cusat-connects-jn.firebaseapp.com",
+  projectId: "cusat-connects-jn",
+  storageBucket: "cusat-connects-jn.appspot.com",
+  messagingSenderId: "434949410119",
+  appId: "1:434949410119:web:c85bf570a4d55e6bb3d062"
 };
 
 
