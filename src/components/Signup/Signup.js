@@ -83,6 +83,7 @@ const Signup = () => {
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+    console.log(showPassword)
   };
 
   return (
