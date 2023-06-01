@@ -5,8 +5,8 @@ import logo from './logo.png';
 import lala from './lala.png'
 import { auth } from "../../firebase"
 import "./Login.css"
-import showImage from "./show.svg";
-import hideImage from "./hide.svg";
+import showImage from "./visibility.svg";
+import hideImage from "./visibilityoff.svg";
 
 
 const Login = () => {

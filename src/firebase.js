@@ -5,12 +5,7 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDoWdOBJjYoejNoTNHqHdEgFFcDqC8tirc",
-  authDomain: "cusat-jn.firebaseapp.com",
-  projectId: "cusat-jn",
-  storageBucket: "cusat-jn.appspot.com",
-  messagingSenderId: "31443014638",
-  appId: "1:31443014638:web:d09f3b1997160f26f674ff"
+  
 };
 
 
