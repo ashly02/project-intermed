@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import Add from "../../img/addpic.png";
+import React, { useState, useEffect } from 'react'
+import Add from "../../img/addpic.png"
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
-import { auth, db, storage } from "../../firebase";
+import { auth, db, storage } from "../../firebase"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore"; 
 import { useNavigate, Link } from 'react-router-dom';
 import logo from './logo.png';
-import './Signup.css';
+import './Signup.css'
 import showImage from "./showpassword.svg" ;
 import hideImage from "./hidepassword.svg" ;
 
 const Signup = () => {
-  const [err, setErr] = useState(false);
-  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [err, setErr] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
+  const [isEmailSent, setIsEmailSent] = useState(false)
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
@@ -31,10 +31,10 @@ const Signup = () => {
     }
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-
+    
       const storageRef = ref(storage, displayName);
       const uploadTask = uploadBytesResumable(storageRef, file);
-
+    
       uploadTask.on(
         (error) => {
           alert('Error uploading avatar. Please try again.')
@@ -47,21 +47,21 @@ const Signup = () => {
                 displayName,
                 photoURL: downloadURL,
               });
-
+    
               await setDoc(doc(db, "users", res.user.uid), {
                 uid: res.user.uid,
                 displayName,
                 email,
                 photoURL: downloadURL,
               });
-
+    
               await setDoc(doc(db, "userChats", res.user.uid), {});
-
+    
               await sendEmailVerification(res.user); // send email verification
-
+    
               setIsEmailSent(true); // set state to indicate that email was sent
-              alert('Please verify your email and refresh the page.');
-
+              alert('Please verify your email and refresh the page.')
+    
             } catch (err) {
               alert('Error creating user. Please try again.')
               console.log(err);
@@ -80,6 +80,17 @@ const Signup = () => {
       }
     }
   };
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        if (user.emailVerified) {
+          navigate("/home");
+        }
+      }
+      
+    });
+    return unsubscribe;
+  }, [navigate]);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
