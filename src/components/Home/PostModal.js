@@ -59,7 +59,6 @@ const PostModal = (props) => {
         setAssetArea(area);
     };
     const postArticle=(e)=>{
-        console.log('post malone:r');
         e.preventDefault();
         if(e.target !== e.currentTarget){
             return;

@@ -51,7 +51,7 @@ const Login = () => {
               />
               <div className="password-toggle-container">
                 <img
-                  src={showPassword ? hideImage : showImage}
+                  src={showPassword ? showImage : hideImage}
                   alt="Toggle Password Visibility"
                   className="password-toggle-image"
                   onClick={toggleShowPassword}
