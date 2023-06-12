@@ -8,6 +8,8 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Msg from "./components/msg.jsx"
 import "./App.css";
+// import "./components/Profile/Profile"
+import Profile from "./components/Profile/Profile";
 
 
 function App(props) {
@@ -20,12 +22,14 @@ function App(props) {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          
           <Route path="/home" element={
           <div><Header/><Home/>
           </div>}>
         
             </Route>
             <Route path="/messaging" element={<Msg />} />
+            <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </div>
