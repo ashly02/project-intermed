@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   grid-area: main;
+  width:850px;
 `;
 export const CommonCard = styled.div`
   text-align:center;
