@@ -171,6 +171,12 @@ const Header = (props) => {
               </a>
             </NavList>
 
+            <NavList>
+              <Link to="/profile">
+                <img src="/images/profile.svg" height={25} alt="" />
+                <button className="b">Profile</button>
+                </Link>
+            </NavList>
 
             <NavList>
               
@@ -178,8 +184,6 @@ const Header = (props) => {
                 <img src="/images/nav-messaging.svg" alt="" />
                 <button className="b">Messaging</button>
                 </Link>
-              
-              
             </NavList>
 
             <User>
