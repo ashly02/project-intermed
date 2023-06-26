@@ -10,6 +10,7 @@ function InterestPage() {
   const col1 = ["Programming", "Python", "Java", "Data Science", "DBMS"];
   const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Fitness", "Gym"];
   const col3 = ["Music", "Dance", "Arts", "Writing", "Painting"];
+  const col4=["violin","piano"];
   const [othersInput, setOthersInput] = useState("");
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -37,7 +38,8 @@ function InterestPage() {
 
     const atLeastOneChecked = col1.some((val) => document.getElementById(val).checked) ||
       col2.some((val) => document.getElementById(val).checked) ||
-      col3.some((val) => document.getElementById(val).checked);
+      col3.some((val) => document.getElementById(val).checked)||
+      col4.some((val) => document.getElementById(val).checked);
     const othersSpecified = othersInput.trim() !== "";
 
     if (atLeastOneChecked || othersSpecified) {
@@ -45,6 +47,7 @@ function InterestPage() {
         col1: col1.filter((val) => document.getElementById(val).checked),
         col2: col2.filter((val) => document.getElementById(val).checked),
         col3: col3.filter((val) => document.getElementById(val).checked),
+        col4: col4.filter((val) => document.getElementById(val).checked),
         others: trimmedWords,
       };
 
@@ -55,7 +58,7 @@ function InterestPage() {
         .update({ interests: dataToSave })
         .then(() => {
           console.log("Interests data saved to user's database collection:", dataToSave);
-          navigate("/home"); // Navigate to "/home" after successful submission
+          navigate("/home"); 
         })
         .catch((error) => {
           console.error("Error saving interests data to user's database collection:", error);
@@ -103,6 +106,21 @@ function InterestPage() {
         </div>
         <div className="inside-div ">
           {col3.map((val) => (
+            <div className="mx-3 form-check" key={val}>
+              <input
+                id={val}
+                type="checkbox"
+                className="form-check-input"
+                onChange={handleCheckboxChange}
+              />
+              <label htmlFor={val} className="form-check-label text-white">
+                {val}
+              </label>
+            </div>
+          ))}
+        </div>
+        <div className="inside-div ">
+          {col4.map((val) => (
             <div className="mx-3 form-check" key={val}>
               <input
                 id={val}

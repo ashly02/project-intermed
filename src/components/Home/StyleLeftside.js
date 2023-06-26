@@ -3,7 +3,100 @@ import styled from "styled-components";
 export const Container = styled.div`
   grid-area: leftside;
   
+  
 `;
+export const EditModel = styled.ul`
+  animation: fadeIn 0.5s;
+  text-align: start;
+  position: absolute;
+  right: 5px;
+  top: 135px;
+  background-color: white;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 6px 9px rgb(0 0 0 / 20%);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 99;
+  min-width: 180px;
+  li {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+    img {
+      width: 18px;
+      height: 20px;
+    }
+    h6 {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 1);
+      font-weight: 600;
+    }
+    .info {
+      text-align: start;
+      span {
+        font-size: 12px;
+        display: block;
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+`;
+export const SharedActor=styled.div`
+padding-right:40px;
+flex-wrap:nowrap;
+padding:12px 16px 0;
+margin-bottom:8px;
+align-items:center;
+display:flex;
+a{
+  margin-right:12px;
+  flex-grow:1;
+  overflow:hidden;
+  display:flex;
+  text-decoration:none;
+
+  img{
+    width:48px;
+    height:48px;
+  }
+  >div{
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+    flex-basis:0;
+    margin-left:8px;
+    overflow:hidden;
+
+    span{
+      text-align:left;
+      :first-child{
+        font-size:14px;
+        font-weight:700;
+        color:rgba(0,0,0,1);
+      }
+      :nth-child(n+1){
+        font-size:12px;
+        color:rgba(0,0,0,0.6);
+      }
+    }
+  }
+}
+button{
+  position:absolute;
+  top:170px;
+  right:12px;
+  background:transparent;
+  border:none;
+  outline:none;
+  padding:.5px;
+}
+`;
+
 
 export const ArtCard = styled.div`
   text-align: center;
