@@ -101,16 +101,12 @@ const Profile = (props) => {
         </Widget>
         
       </ArtCard>
-
-
       <Posts/>
     </Container>
     
     </>
   );
 };
-
-
 
 
 
