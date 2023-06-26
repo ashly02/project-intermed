@@ -6,6 +6,7 @@ import ReactPlayer from "react-player";
 
 
 import { SharedImg, Container, Content, Article } from "./StylePosts";
+import { ArtCard } from "./StyleProfile";
 
 const Posts = (props) => {
   const [showModal, setShowModal] = useState("close");
@@ -29,7 +30,7 @@ const Posts = (props) => {
   return (
     <>
       <Container>
-        
+        <ArtCard>
       <Content>
   {props.loading && <img src="./images/spin-loader.svg" />}
   {props.articles.length > 0 &&
@@ -56,6 +57,7 @@ const Posts = (props) => {
 
         
         <PostModal showModal={showModal} handleClick={handleClick} />
+        </ArtCard>
       </Container>
     </>
   );
