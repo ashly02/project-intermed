@@ -7,6 +7,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Msg from "./components/msg.jsx"
+import InterestPage from './components/InterestPage'
 import "./App.css";
 // import "./components/Profile/Profile"
 import Profile from "./components/Profile/Profile";
@@ -22,7 +23,7 @@ function App(props) {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          
+          <Route path="/interest" element={<InterestPage />} />
           <Route path="/home" element={
           <div><Header/><Home/>
           </div>}>
