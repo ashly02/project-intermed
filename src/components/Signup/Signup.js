@@ -114,7 +114,7 @@ const Signup = () => {
       <div className='signup-container'>
         <div className='left-side'>
           <div className='welcome'>WELCOME ABOARD!</div>
-          <img src={logo} className="applogo" alt="logo" />
+          <img src={logo} className="applogo" alt="./images/spin-loader.svg" />
           <span className='logo'>engage,inspire,connect..</span>
         </div>
         <div className='right-side'>

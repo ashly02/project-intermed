@@ -98,7 +98,7 @@ button{
 
 
 export const ArtCard = styled.div`
- text-align:center;
+ 
   overflow: hidden;
   width:1250px;
   margin-bottom: 8px;
@@ -113,8 +113,6 @@ export const ArtCard = styled.div`
 `;
 
 export const UserInfo = styled.div`
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   word-wrap: break-word;
   word-break: break-word;
  
@@ -124,7 +122,7 @@ export const CardBackground = styled.div`
   background: url("/images/16389946_5739877.jpg");
   background-position: center;
   background-size: 462px;
-  height: 84px;
+  height: 124px;
   margin: -12px -12px 0;
 `;
 
@@ -138,7 +136,7 @@ export const Photo = styled.img`
   background-size: 60%;
   background-repeat: no-repeat;
   border: 2px solid white;
-  margin: -38px auto 12px 60px;
+  margin: -85px auto 12px 60px;
   border-radius: 50%;
 `;
 
