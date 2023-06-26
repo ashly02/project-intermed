@@ -134,15 +134,16 @@ function InterestPage() {
             </div>
           ))}
         </div>
-      </div>
-      <div className="w-50 px-3 py-3 ">
+        <div className="w-50 px-3 py-3 ">
         <input
-          className="py-3"
+          className="others"
           placeholder="Others, specify it"
           value={othersInput}
           onChange={handleOthersInputChange}
         />
       </div>
+      </div>
+      
       <div>
         <button className="px-2 py-2 " onClick={handleSubmit}>
           Submit

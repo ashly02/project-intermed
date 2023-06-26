@@ -6,58 +6,58 @@
   }
   
   .head {
-    font-size: 24px;
     text-align: center;
+    font-weight: bolder;
+    font-size: 35px;
+    font-family:'Texturina', serif;
+    color:#260b46;
+    margin-top: 40px;
   }
   
   .interest-div {
-    width: 75%;
+    width: 85%;
     margin: 20px 0;
-    margin-left: 10%;
+    margin-left: 5%;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 20px 40px rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px;
+    height: 550px;
   }
   
   .inside-div {
-    background-color: rgba(115, 62, 201, 0.4);
+    background-color: #390874bb;  
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 10px;
     padding: 10px;
+    height:450px;
+    width:20%;
+    box-shadow: 6px 6px 9px -1px #512780ad;
   }
   
   .form-check {
-    margin: 10px;
+    margin: 20px 0px 30px 20px;
+    font-size: 25px;
   }
   
   .form-check-input {
     margin-right: 10px;
+
   }
   
   .bg-info {
-    background-color: rgba(115, 62, 201, 0.4)!important;
+    background-color: rgba(81, 15, 187, 0.4)!important;
   }
   
-  .w-50 {
-    width: 50%;
-  }
-  
-  .px-3 {
-    padding-left: 1rem ;
-    padding-right: 1rem ;
-    margin-left: 30%;
-    
-  }
   
   .py-3 {
-    padding-top: 1rem ;
+    padding-top: 1em ;
     padding-bottom: 1rem ;
   }
   
@@ -92,7 +92,8 @@
   }
   
   .text-white {
-    color: #fff;
+    color:white;
+    font-family:'Texturina', serif;
   }
   
   .form-control {
