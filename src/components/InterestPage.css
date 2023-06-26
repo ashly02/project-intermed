@@ -22,10 +22,12 @@
     border-radius: 10px;
     box-shadow: 1px 20px 40px rgba(0, 0, 0, 0.8);
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     padding: 20px;
-    height: 550px;
+    height: 810px;
   }
   
   .inside-div {
@@ -35,7 +37,7 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px ;
     height:450px;
     width:20%;
     box-shadow: 6px 6px 9px -1px #512780ad;
@@ -50,50 +52,9 @@
     margin-right: 10px;
 
   }
-  
-  .bg-info {
-    background-color: rgba(81, 15, 187, 0.4)!important;
-  }
-  
-  
-  .py-3 {
-    padding-top: 1em ;
-    padding-bottom: 1rem ;
-  }
-  
-  .btn {
-    font-size: 16px;
-    border-radius: 5px;
-   
-  }
-  
-  .btn-outline-light {
-    color: #fff;
-    background-color: transparent;
-    border-color: #fff;
-  }
-  
-  .btn-outline-light:hover {
-    color: #17a2b8;
-    background-color: #fff;
-    border-color: #17a2b8;
-  }
-  
-  .rounded {
-    border-radius: 10px !important;
-  }
-  
-  .shadow-lg {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .bg-danger {
-    background-color: #dc3545 !important;
-  }
-  
   .text-white {
     color:white;
-    font-family:'Texturina', serif;
+    ;font-family:'Texturina', serif;
   }
   
   .form-control {
@@ -105,4 +66,75 @@
     box-shadow: none;
     border-color: #17a2b8;
   }
-  
+  .centered-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
+  .others{
+    box-sizing: border-box;
+    background-color: #390874bb;
+    color: white;
+    border: none;
+    height: 100px;
+    width:100%;
+    border:transparent;
+    border-radius: 10px;
+    font-size: 27px;
+    font-family:'Texturina', serif;
+    box-shadow: 6px 6px 9px -1px #512780ad;
+    margin-bottom: 10px;
+  }
+  .others::placeholder{
+    color:white;
+    text-indent: 20px;
+  }
+
+ .bt-submit{
+    height: 100px;
+    width:700px;
+    font-size: 27px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+ }
+
+ .bt-submit::after{
+  content: "";
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+ }
+
+ .bt-submit:hover::after{
+  top: 0px;
+  left: 0px;
+ }
+ 
+ @media (min-width: 768px) {
+  .bt-submit {
+    padding: 13px 50px 13px;
+  }
+}
+ .submit-div{
+  margin-top: 20px;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
