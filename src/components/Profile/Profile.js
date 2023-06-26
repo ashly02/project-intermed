@@ -1,23 +1,26 @@
-import {connect} from "react-redux";
-import Pic from "../../img/photo.svg"
-import {useContext, useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
+import Pic from "../../img/photo.svg";
+import { useContext, useState, useEffect, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { auth, storage, db} from '../../firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import {  doc, updateDoc, onSnapshot  } from "firebase/firestore";
-import {  updateProfile } from 'firebase/auth';
-import{
+import { auth, storage, db } from "../../firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
+import { doc, updateDoc, onSnapshot } from "firebase/firestore";
+import { updateProfile } from "firebase/auth";
+import {
   Container,
   ArtCard,
-  UserInfo,
   CardBackground,
   Photo,
   Link,
-  Widget,
   SharedActor,
-  EditModel
+  EditModel,Widget,
 } from "./StyleProfile";
 import Posts from "./Posts";
+import styled from "styled-components";
 
 const Profile = (props) => {
   const [image, setImage] = useState(null);
@@ -29,20 +32,25 @@ const Profile = (props) => {
   const [newInterest, setNewInterest] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [showInputField, setShowInputField] = useState(false);
+
   useEffect(() => {
     if (currentUser && currentUser.uid) {
-      const unsubscribe = onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
-        if (doc.exists()) {
-          const userInterests = doc.data().interests;
-          if (userInterests) {
-            setInterests(userInterests);
+      const unsubscribe = onSnapshot(
+        doc(db, "users", currentUser.uid),
+        (doc) => {
+          if (doc.exists()) {
+            const userInterests = doc.data().interests;
+            if (userInterests) {
+              setInterests(userInterests);
+            }
           }
         }
-      });
+      );
 
       return () => unsubscribe();
     }
   }, [currentUser]);
+
   useEffect(() => {
     if (currentUser && currentUser.uid) {
       setLoading(false);
@@ -60,13 +68,14 @@ const Profile = (props) => {
       setImage(e.target.files[0]);
     }
   };
+
   const handleNewInterestChange = (e) => {
     setNewInterest(e.target.value);
   };
 
   const addNewInterest = (e) => {
     e.preventDefault(); // Prevent form submission
-  
+
     if (newInterest) {
       const userRef = doc(db, "users", currentUser.uid);
       updateDoc(userRef, {
@@ -95,7 +104,6 @@ const Profile = (props) => {
     setShowInputField(true);
   };
 
-
   useEffect(() => {
     if (image) {
       const imageRef = ref(storage, `${currentUser.uid}/image`);
@@ -115,7 +123,7 @@ const Profile = (props) => {
                 .catch((error) => console.log(error.message));
             })
             .catch((error) => {
-              console.log(error.message, 'error getting the image url');
+              console.log(error.message, "error getting the image url");
             });
           setImage(null);
         })
@@ -126,116 +134,182 @@ const Profile = (props) => {
   }, [currentUser, image]);
 
   if (loading) {
-    return <div><img src="./images/spin-loader.svg" width="200px" height="200px"/></div>;
+    return (
+      <div>
+        <img src="./images/spin-loader.svg" width="200px" height="200px" />
+      </div>
+    );
   }
+  const InterestsContainer = styled.div`
+  
+  justify-content: center;
+  margin-top: 60px;
+  margin-left:-100px;
+`;
+  // CSS styling for the interest buttons
+  const InterestButton = styled.button`
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 10px;
+  margin: 8px;
+  width: 85px; /* Adjust the width as per your preference */
+  height: 40px;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+  box-shadow: 0 0 0 1px #814df0, 0 0 0 3px #fff;
+  &:hover {
+    background-color: #814df0;
+    color: #fff;
+    box-shadow: 0 0 0 2px #814df0, 0 0 0 4px #fff;
+  }
+`;
+const AddInterestForm = styled.form`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const InterestInput = styled.input`
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+`;
+
+const AddInterestButton = styled.button`
+  background-color: #814df0;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+
+  &:hover {
+    background-color: #6339b4;
+  }
+`;
+
+
   return (
     <>
-    <Container>
-      <ArtCard>
-        <UserInfo>
-          <CardBackground />
-            <Photo img src={url ? url : currentUser.photoURL} alt={Pic} onClick={handleImageClick}
-          style={{ cursor: 'pointer' }} />
-          <input
-          type='file'
-          accept='image/*'
-          style={{ display: 'none' }}
-          ref={fileInputRef}
-          onChange={handleImageChange}
-        /><a>
-            <Link>{props.user ? props.user.displayName:"there"}</Link>
-          </a>
-          <a>
-           
-          </a>
-        </UserInfo>
+      <Container>
         <Widget>
-        <SharedActor>
-            <button onClick={() => toggleDropdown()}>
-              <img src="./images/ellipsis.svg" alt="" />
-            </button>
-            {showDropdown && (
-              <EditModel>
-                <li onClick={() => handleAddInterestClick()}>
-                  <img src="/images/addicon.png" alt="" />
-                  <h6>Add new Interest</h6>
-                </li>
-              </EditModel>
-            )}
-          </SharedActor>
-         
-        {interests && (
-          <div>
-            <div className="interests-container">
-              {interests.col1 &&
-                interests.col1.map((interest) => (
-                  <button key={interest} className="interest-button">
-                    {interest}
-                  </button>
-                ))}
-              {interests.col2 &&
-                interests.col2.map((interest) => (
-                  <button key={interest} className="interest-button">
-                    {interest}
-                  </button>
-                ))}
-              {interests.col3 &&
-                interests.col3.map((interest) => (
-                  <button key={interest} className="interest-button">
-                    {interest}
-                  </button>
-                ))}
-                {interests.col4 &&
-                interests.col4.map((interest) => (
-                  <button key={interest} className="interest-button">
-                    {interest}
-                  </button>
-                ))}
-              {interests.others &&
-                interests.others.map((interest) => (
-                  <button key={interest} className="interest-button">
-                    {interest}
-                  </button>
-                ))}
-              {showInputField && (
-  <form onSubmit={addNewInterest}>
-    <input
-      type="text"
-      placeholder="Add new interest.."
-      className="interest-input"
-      value={newInterest}
-      onChange={handleNewInterestChange}
-    />
-    <button type="submit" className="add-interest-button">
-      Add
-    </button>
-  </form>
-)}
-              {newInterest && (
-                <button className="interest-button" onClick={() => addNewInterest()}>
-                  {newInterest}
-                </button>
+      <CardBackground />
+        <ArtCard>
+          <>
+          
+            <Photo
+              img
+              src={url ? url : currentUser.photoURL}
+              alt={Pic}
+              onClick={handleImageClick}
+              style={{ cursor: "pointer" }}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              ref={fileInputRef}
+              onChange={handleImageChange}
+            />
+            <Link>{props.user ? props.user.displayName : "there"}</Link>
+          </>
+          <>
+            <SharedActor>
+              <button onClick={() => toggleDropdown()}>
+                <img src="./images/ellipsis.svg" alt="" />
+              </button>
+              {showDropdown && (
+                <EditModel>
+                  <li onClick={() => handleAddInterestClick()}>
+                    <img src="/images/addicon.png" alt="" />
+                    <h6>Add new Interest</h6>
+                  </li>
+                </EditModel>
               )}
-            </div>
-          </div>
-        )}
+            </SharedActor>
+            
+            {interests && (
+              <div>
+                <InterestsContainer className="interests-container">
+                  {interests.col1 &&
+                    interests.col1.map((interest) => (
+                      <InterestButton key={interest}>
+                        {interest}
+                      </InterestButton>
+                    ))}
+                  {interests.col2 &&
+                    interests.col2.map((interest) => (
+                      <InterestButton key={interest}>
+                        {interest}
+                      </InterestButton>
+                    ))}
+                  {interests.col3 &&
+                    interests.col3.map((interest) => (
+                      <InterestButton key={interest}>
+                        {interest}
+                      </InterestButton>
+                    ))}
+                  {interests.col4 &&
+                    interests.col4.map((interest) => (
+                      <InterestButton key={interest}>
+                        {interest}
+                      </InterestButton>
+                    ))}
+                  {interests.others &&
+                    interests.others.map((interest) => (
+                      <InterestButton key={interest}>
+                        {interest}
+                      </InterestButton>
+                    ))}
+                  {showInputField && (
+                    <AddInterestForm onSubmit={addNewInterest}>
+                      <InterestInput
+                        type="text"
+                        placeholder="Add new interest.."
+                        className="interest-input"
+                        value={newInterest}
+                        onChange={handleNewInterestChange}
+                      />
+                      <AddInterestButton type="submit" className="add-interest-button">
+                        Add
+                      </AddInterestButton>
+                    </AddInterestForm>
+                  )}
+                  {newInterest && (
+                    <InterestButton onClick={() => addNewInterest()}>
+                      {newInterest}
+                    </InterestButton>
+                  )}
+                   </InterestsContainer>
+                </div>
+                
+              
+            )}
+            
+          </>
+        </ArtCard>
         </Widget>
-        
-      </ArtCard>
-      <Posts/>
-    </Container>
-    
+        <Posts />
+      </Container>
     </>
   );
 };
 
-
-
-const mapStateToProps=(state)=>{
+const mapStateToProps = (state) => {
   return {
-    user:state.userState.user,
-  }
-}
-
+    user: state.userState.user,
+  };
+};
 
 export default connect(mapStateToProps)(Profile);

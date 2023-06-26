@@ -5,8 +5,7 @@ import { getArticlesAPI } from "../../actions";
 import ReactPlayer from "react-player";
 
 
-import { SharedImg, Container, Content, Article } from "./StylePosts";
-import { ArtCard } from "./StyleProfile";
+import { SharedImg, Container, Content, Article ,ArtCard} from "./StylePosts";
 
 const Posts = (props) => {
   const [showModal, setShowModal] = useState("close");

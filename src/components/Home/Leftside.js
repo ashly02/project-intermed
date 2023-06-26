@@ -6,7 +6,8 @@ import { auth, storage, db } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
-import "./interest.css";
+import "./interest.css";import styled from "styled-components";
+
 import {
   Container,
   ArtCard,
@@ -95,6 +96,38 @@ const Leftside = (props) => {
   const handleNewInterestChange = (e) => {
     setNewInterest(e.target.value);
   };
+  const AddInterestForm = styled.form`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const InterestInput = styled.input`
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom:4px;
+  margin-left:4px;
+`;
+
+const AddInterestButton = styled.button`
+  background-color: #814df0;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+
+  &:hover {
+    background-color: #6339b4;
+  }
+`;
 
   const addNewInterest = (e) => {
     e.preventDefault(); // Prevent form submission
@@ -203,24 +236,25 @@ const Leftside = (props) => {
                   </button>
                 ))}
               {showInputField && (
-  <form onSubmit={addNewInterest}>
-    <input
-      type="text"
-      placeholder="Add new interest.."
-      className="interest-input"
-      value={newInterest}
-      onChange={handleNewInterestChange}
-    />
-    <button type="submit" className="add-interest-button">
-      Add
-    </button>
-  </form>
-)}
-              {newInterest && (
-                <button className="interest-button" onClick={() => addNewInterest()}>
-                  {newInterest}
-                </button>
-              )}
+                    <AddInterestForm onSubmit={addNewInterest}>
+                      <InterestInput
+                        type="text"
+                        placeholder="Add new interest.."
+                        className="interest-input"
+                        value={newInterest}
+                        onChange={handleNewInterestChange}
+                      />
+                      <AddInterestButton type="submit" className="add-interest-button">
+                        Add
+                      </AddInterestButton>
+                    </AddInterestForm>
+                  )}
+                  {newInterest && (
+                    <button onClick={() => addNewInterest()}>
+                      {newInterest}
+                    </button>
+                  )}
+            
             </div>
           </div>
         )}

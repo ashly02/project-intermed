@@ -32,19 +32,8 @@ export const EditModel = styled.ul`
       width: 18px;
       height: 20px;
     }
-    h6 {
-      font-size: 14px;
-      color: rgba(0, 0, 0, 1);
-      font-weight: 600;
-    }
-    .info {
-      text-align: start;
-      span {
-        font-size: 12px;
-        display: block;
-        color: rgba(0, 0, 0, 0.6);
-      }
-    }
+  
+ 
   }
 `;
 export const SharedActor=styled.div`
@@ -53,16 +42,12 @@ padding:10px 12px 0;
 align-items:center;
 display:flex;
 a{
-    
-    flex-grow:1;
-    overflow:hidden;
-    display:flex;
-    text-decoration:none;
 
   img{
     width:48px;
     height:48px;
   }
+}
   >div{
     display:flex;
     flex-direction:column;
@@ -81,13 +66,13 @@ a{
       :nth-child(n+1){
         font-size:12px;
         color:rgba(0,0,0,0.6);
-      }
+      
     }
   }
 }
 button{
   position:absolute;
-  top:170px;
+  top:0px;
   right:12px;
   background:transparent;
   border:none;
@@ -98,32 +83,43 @@ button{
 
 
 export const ArtCard = styled.div`
- 
-  overflow: hidden;
+
+  display:flex;
+  position:relative;
   width:1250px;
-  margin-bottom: 8px;
-  margin-left: 125px;
-  margin-top: 28px;
+  margin-bottom: 80px;
   background-color: #fff;
   border-radius: 5px;
   transition: box-shadow 83ms;
-  position: relative;
   border: none;
+  box-radius:0 0 5px 5px;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
-`;
+  
+  `;
+  export const Widget = styled.div`
 
-export const UserInfo = styled.div`
-  word-wrap: break-word;
-  word-break: break-word;
- 
-`;
-
+  
+  width:1050px;
+  margin-bottom: 80px;
+  margin-left: 125px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: box-shadow 83ms;
+  border: none;
+  box-radius:5px;
+  
+  
+  `;
 export const CardBackground = styled.div`
   background: url("/images/16389946_5739877.jpg");
   background-position: center;
   background-size: 462px;
   height: 124px;
-  margin: -12px -12px 0;
+  width:1250px;
+  margin:auto;
+  margin-top:10px;
+  border-radius:5px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
 `;
 
 export const Photo = styled.img`
@@ -141,13 +137,10 @@ export const Photo = styled.img`
 `;
 
 export const Link = styled.div`
+  margin-left:120px;
+  margin-top:25px;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
-  margin-left:70px;
   `;
-
- 
-export const Widget = styled.div`
   
-`;
