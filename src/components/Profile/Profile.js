@@ -26,7 +26,6 @@ import {
   AddInterestButton
 } from "./StyleProfile";
 import Posts from "./Posts";
-import styled from "styled-components";
 
 const Profile = (props) => {
   const [image, setImage] = useState(null);

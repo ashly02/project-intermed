@@ -6,7 +6,7 @@ import { auth, storage, db } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
-import "./interest.css";import styled from "styled-components";
+import "./interest.css";
 
 import {
   Container,
