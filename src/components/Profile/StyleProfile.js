@@ -80,8 +80,6 @@ button{
   padding:.5px;
 }
 `;
-
-
 export const ArtCard = styled.div`
 
   display:flex;
@@ -137,10 +135,67 @@ export const Photo = styled.img`
 `;
 
 export const Link = styled.div`
-  margin-left:120px;
+  margin-left:80px;
   margin-top:25px;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
   `;
+  export const InterestsContainer = styled.div`
   
+  justify-content: center;
+  margin-top: 60px;
+  margin-left:-151px;
+`;
+  // CSS styling for the interest buttons
+  export const InterestButton = styled.button`
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 10px;
+  margin: 8px;
+  width: 85px; /* Adjust the width as per your preference */
+  height: 40px;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+  box-shadow: 0 0 0 1px #814df0, 0 0 0 3px #fff;
+  &:hover {
+    background-color: #7e0ec4;
+    color: #fff;
+    box-shadow: 0 0 0 2px #814df0, 0 0 0 4px #fff;
+  }
+`;
+export const AddInterestForm = styled.form`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+export const InterestInput = styled.input`
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+`;
+
+export const AddInterestButton = styled.button`
+  background-color: #814df0;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+
+  &:hover {
+    background-color: #6339b4;
+  }
+`;

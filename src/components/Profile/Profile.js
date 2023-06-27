@@ -11,7 +11,7 @@ import {
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import {
-  Container,
+  Container,InterestsContainer,InterestInput,InterestButton,AddInterestForm,AddInterestButton,
   ArtCard,
   CardBackground,
   Photo,
@@ -32,6 +32,8 @@ const Profile = (props) => {
   const [newInterest, setNewInterest] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [showInputField, setShowInputField] = useState(false);
+  const [showAboutInput, setShowAboutInput] = useState(false);
+  const [aboutText, setAboutText] = useState("");
 
   useEffect(() => {
     if (currentUser && currentUser.uid) {
@@ -42,6 +44,10 @@ const Profile = (props) => {
             const userInterests = doc.data().interests;
             if (userInterests) {
               setInterests(userInterests);
+            }
+            const userAbout = doc.data().about;
+            if (userAbout) {
+              setAboutText(userAbout);
             }
           }
         }
@@ -140,66 +146,31 @@ const Profile = (props) => {
       </div>
     );
   }
-  const InterestsContainer = styled.div`
   
-  justify-content: center;
-  margin-top: 60px;
-  margin-left:-100px;
-`;
-  // CSS styling for the interest buttons
-  const InterestButton = styled.button`
-  background-color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 4px 10px;
-  margin: 8px;
-  width: 85px; /* Adjust the width as per your preference */
-  height: 40px;
-  font-size: 14px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  outline: none;
-  box-shadow: 0 0 0 1px #814df0, 0 0 0 3px #fff;
-  &:hover {
-    background-color: #814df0;
-    color: #fff;
-    box-shadow: 0 0 0 2px #814df0, 0 0 0 4px #fff;
-  }
-`;
-const AddInterestForm = styled.form`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-`;
 
-const InterestInput = styled.input`
-  flex-grow: 1;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-`;
+  const handleAddAbout = () => {
+    setShowAboutInput(true);
+  };
+  const handleAboutInputChange = (e) => {
+    setAboutText(e.target.value);
+  };
+  
 
-const AddInterestButton = styled.button`
-  background-color: #814df0;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 16px;
-  margin-left: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  outline: none;
+  const addAbout = (e) => {
+    e.preventDefault(); // Prevent form submission
 
-  &:hover {
-    background-color: #6339b4;
-  }
-`;
-
-
+    if (aboutText) {
+      const userRef = doc(db, "users", currentUser.uid);
+      updateDoc(userRef, { about: aboutText })
+        .then(() => {
+          console.log("About added successfully.");
+          setShowAboutInput(false); // Hide the input field after adding
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
+  };
   return (
     <>
       <Container>
@@ -235,10 +206,31 @@ const AddInterestButton = styled.button`
                     <img src="/images/addicon.png" alt="" />
                     <h6>Add new Interest</h6>
                   </li>
+                  <li onClick={() => handleAddAbout()}>
+                    <img src="/images/addicon.png" alt="" />
+                    <h6>Add About</h6>
+                  </li>
                 </EditModel>
               )}
             </SharedActor>
-            
+            {showAboutInput &&(
+          <form onSubmit={addAbout}>
+            <InterestInput
+              type="text"
+              placeholder="Add about details.."
+              className="about-input"
+              value={aboutText}
+              onChange={handleAboutInputChange}
+            />
+            <AddInterestButton type="submit" className="add-about-button">
+              Add
+            </AddInterestButton>
+          </form>
+
+        ) }
+         {aboutText && (
+              <div>{aboutText}</div>
+            )}
             {interests && (
               <div>
                 <InterestsContainer className="interests-container">
