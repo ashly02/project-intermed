@@ -36,52 +36,51 @@ export const EditModel = styled.ul`
  
   }
 `;
-export const SharedActor=styled.div`
-flex-wrap:nowrap;
-padding:10px 12px 0;
-align-items:center;
-display:flex;
-a{
+export const SharedActor = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 12px 0;
+  align-items: center;
 
-  img{
-    width:48px;
-    height:48px;
-  }
-}
-  >div{
-    display:flex;
-    flex-direction:column;
-    flex-grow:1;
-    flex-basis:0;
-    margin-left:8px;
-    overflow:hidden;
-
-    span{
-      text-align:left;
-      :first-child{
-        font-size:14px;
-        font-weight:700;
-        color:rgba(0,0,0,1);
-      }
-      :nth-child(n+1){
-        font-size:12px;
-        color:rgba(0,0,0,0.6);
-      
+  > a {
+    img {
+      width: 48px;
+      height: 48px;
     }
   }
-}
-button{
-  position:absolute;
-  top:0px;
-  right:12px;
-  background:transparent;
-  border:none;
-  outline:none;
-  padding:.5px;
-}
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-left: 8px;
+    overflow: hidden;
+
+    span {
+      text-align: left;
+      :first-child {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 1);
+      }
+      :nth-child(n + 1) {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+
+  > button {
+    position: absolute;
+    top: 0px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.5px;
+  }
 `;
-
-
 export const ArtCard = styled.div`
 
   display:flex;
@@ -129,12 +128,12 @@ export const Photo = styled.img`
   background-size: 60%;
   background-repeat: no-repeat;
   border: 2px solid white;
-  margin: -85px auto 12px 60px;
+  margin: -85px auto 12px 100px;
   border-radius: 50%;
 `;
 
 export const Link = styled.div`
-  margin-left:120px;
+  margin-left:70px;
   margin-top:25px;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.9);
@@ -142,10 +141,12 @@ export const Link = styled.div`
   `;
   
   export const InterestsContainer = styled.div`
-  
-  justify-content: center;
-  margin-top: 60px;
-  margin-left:-100px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: -120px;
+  margin-top: 80px;
+  margin-right:80px
 `;
   // CSS styling for the interest buttons
   export const InterestButton = styled.button`
@@ -154,9 +155,10 @@ export const Link = styled.div`
   border-radius: 20px;
   padding: 4px 10px;
   margin: 8px;
-  width: 85px; /* Adjust the width as per your preference */
+  width: 120px; 
   height: 40px;
   font-size: 14px;
+  text-transform: uppercase;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   cursor: pointer;

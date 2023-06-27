@@ -11,19 +11,13 @@ import {
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import {
-  Container,
+  Container,InterestsContainer,InterestInput,InterestButton,AddInterestForm,AddInterestButton,
   ArtCard,
   CardBackground,
   Photo,
   Link,
   SharedActor,
-  EditModel,
-  Widget,
-  InterestsContainer,
-  InterestButton,
-  AddInterestForm,
-  InterestInput,
-  AddInterestButton
+  EditModel,Widget,
 } from "./StyleProfile";
 import Posts from "./Posts";
 
@@ -37,6 +31,8 @@ const Profile = (props) => {
   const [newInterest, setNewInterest] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [showInputField, setShowInputField] = useState(false);
+  const [showAboutInput, setShowAboutInput] = useState(false);
+  const [aboutText, setAboutText] = useState("");
 
   useEffect(() => {
     if (currentUser && currentUser.uid) {
@@ -47,6 +43,10 @@ const Profile = (props) => {
             const userInterests = doc.data().interests;
             if (userInterests) {
               setInterests(userInterests);
+            }
+            const userAbout = doc.data().about;
+            if (userAbout) {
+              setAboutText(userAbout);
             }
           }
         }
@@ -147,14 +147,36 @@ const Profile = (props) => {
   }
   
 
+  const handleAddAbout = () => {
+    setShowAboutInput(true);
+  };
+  const handleAboutInputChange = (e) => {
+    setAboutText(e.target.value);
+  };
+  
 
+  const addAbout = (e) => {
+    e.preventDefault(); // Prevent form submission
+
+    if (aboutText) {
+      const userRef = doc(db, "users", currentUser.uid);
+      updateDoc(userRef, { about: aboutText })
+        .then(() => {
+          console.log("About added successfully.");
+          setShowAboutInput(false); // Hide the input field after adding
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
+  };
   return (
-    <>
+   
       <Container>
         <Widget>
       <CardBackground />
         <ArtCard>
-          <>
+          
           
             <Photo
               img
@@ -171,8 +193,11 @@ const Profile = (props) => {
               onChange={handleImageChange}
             />
             <Link>{props.user ? props.user.displayName : "there"}</Link>
-          </>
-          <>
+          
+          
+          {aboutText && (
+              <AboutText>{aboutText}</AboutText>
+            )}
             <SharedActor>
               <button onClick={() => toggleDropdown()}>
                 <img src="./images/ellipsis.svg" alt="" />
@@ -183,10 +208,29 @@ const Profile = (props) => {
                     <img src="/images/addicon.png" alt="" />
                     <h6>Add new Interest</h6>
                   </li>
+                  <li onClick={() => handleAddAbout()}>
+                    <img src="/images/addicon.png" alt="" />
+                    <h6>Add About</h6>
+                  </li>
                 </EditModel>
               )}
             </SharedActor>
-            
+            {showAboutInput &&(
+          <form onSubmit={addAbout}>
+            <InterestInput
+              type="text"
+              placeholder="Add about details.."
+              className="about-input"
+              value={aboutText}
+              onChange={handleAboutInputChange}
+            />
+            <AddInterestButton type="submit" className="add-about-button">
+              SUBMIT
+            </AddInterestButton>
+          </form>
+
+        ) }
+        
             {interests && (
               <div>
                 <InterestsContainer className="interests-container">
@@ -245,21 +289,28 @@ const Profile = (props) => {
               
             )}
             
-          </>
+        
         </ArtCard>
         </Widget>
         <Posts />
       </Container>
-    </>
+   
   );
 };
-
-
 
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
   };
 };
+const AboutText = styled.div`
+  color: #000;
+  font-size: 16px;
+  font-weight:600;
+  margin-top:50px;
+  margin-left:-65px;
+  white-space: nowrap;
+  /* Add more styles as needed */
+`;
 
 export default connect(mapStateToProps)(Profile);

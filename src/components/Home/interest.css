@@ -20,7 +20,7 @@
   outline: none;
   box-shadow: 0 0 0 1px #814df0, 0 0 0 3px #fff;
   &:hover {
-    background-color: #814df0;
+    background-color: #7e0ec4;
     color: #fff;
     box-shadow: 0 0 0 2px #814df0, 0 0 0 4px #fff;
   }
