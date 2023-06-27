@@ -183,3 +183,36 @@ export const Widget = styled.div`
     color: rgba(0, 0, 0, 1);
   }
 `;
+
+export const AddInterestForm = styled.form`
+display: flex;
+align-items: center;
+margin-top: 10px;
+`;
+
+export const InterestInput = styled.input`
+flex-grow: 1;
+padding: 8px;
+font-size: 14px;
+border: 1px solid #ccc;
+border-radius: 20px;
+margin-bottom:4px;
+margin-left:4px;
+`;
+
+export const AddInterestButton = styled.button`
+background-color: #814df0;
+color: #fff;
+border: none;
+border-radius: 20px;
+padding: 8px 16px;
+margin-left: 8px;
+font-size: 14px;
+cursor: pointer;
+transition: background-color 0.3s;
+outline: none;
+
+&:hover {
+  background-color: #6339b4;
+}
+`;

@@ -4,7 +4,7 @@ export const Container = styled.div`
 
 justify-content: center;
 align-items: center;
-height: 100vh
+height: 100vh;
 `;
 export const EditModel = styled.ul`
   animation: fadeIn 0.5s;
@@ -90,7 +90,6 @@ export const ArtCard = styled.div`
   border-radius: 5px;
   transition: box-shadow 83ms;
   border: none;
-  box-radius:0 0 5px 5px;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
   
   `;
@@ -103,9 +102,7 @@ export const ArtCard = styled.div`
   background-color: #fff;
   border-radius: 5px;
   transition: box-shadow 83ms;
-  border: none;
-  box-radius:5px;
-  
+  border: none;  
   
   `;
 export const CardBackground = styled.div`
@@ -141,11 +138,12 @@ export const Link = styled.div`
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
   `;
+  
   export const InterestsContainer = styled.div`
   
   justify-content: center;
   margin-top: 60px;
-  margin-left:-151px;
+  margin-left:-100px;
 `;
   // CSS styling for the interest buttons
   export const InterestButton = styled.button`
@@ -164,7 +162,7 @@ export const Link = styled.div`
   outline: none;
   box-shadow: 0 0 0 1px #814df0, 0 0 0 3px #fff;
   &:hover {
-    background-color: #7e0ec4;
+    background-color: #814df0;
     color: #fff;
     box-shadow: 0 0 0 2px #814df0, 0 0 0 4px #fff;
   }

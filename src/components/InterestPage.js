@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 
 function InterestPage() {
-  const col1 = ["Programming", "Python", "Java", "Data Science", "DBMS"];
-  const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Fitness", "Gym"];
-  const col3 = ["Music", "Dance", "Arts", "Writing", "Painting"];
-  const col4=["violin","piano"];
+  const col1 = ["Programming", "Python", "Java", "Data Science", "DBMS","React"];
+  const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Fitness", "Gym","Basketball"];
+  const col3 = ["Music", "Dance", "Arts ", "Writing ", "Painting"];
+  const col4=  ["Violin","Piano","Guitar","Drums","Trumphets","Accordion"];
   const [othersInput, setOthersInput] = useState("");
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -39,8 +39,8 @@ function InterestPage() {
     const atLeastOneChecked = col1.some((val) => document.getElementById(val).checked) ||
       col2.some((val) => document.getElementById(val).checked) ||
       col3.some((val) => document.getElementById(val).checked)||
-      col4.some((val) => document.getElementById(val).checked);
-    const othersSpecified = othersInput.trim() !== "";
+      col4.some((val) => document.getElementById(val).checked)
+      const othersSpecified = othersInput.trim() !== "";
 
     if (atLeastOneChecked || othersSpecified) {
       const dataToSave = {
