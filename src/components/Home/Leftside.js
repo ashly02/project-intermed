@@ -17,7 +17,10 @@ import {
   Link,
   Widget,
   SharedActor,
-  EditModel
+  EditModel,
+  AddInterestForm,
+  InterestInput,
+  AddInterestButton
 } from "./StyleLeftside";
 
 const Leftside = (props) => {
@@ -96,38 +99,7 @@ const Leftside = (props) => {
   const handleNewInterestChange = (e) => {
     setNewInterest(e.target.value);
   };
-  const AddInterestForm = styled.form`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-`;
-
-const InterestInput = styled.input`
-  flex-grow: 1;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  margin-bottom:4px;
-  margin-left:4px;
-`;
-
-const AddInterestButton = styled.button`
-  background-color: #814df0;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 16px;
-  margin-left: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  outline: none;
-
-  &:hover {
-    background-color: #6339b4;
-  }
-`;
+ 
 
   const addNewInterest = (e) => {
     e.preventDefault(); // Prevent form submission

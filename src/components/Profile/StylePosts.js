@@ -26,7 +26,6 @@ export const ArtCard = styled.div`
   border-radius: 5px;
   transition: box-shadow 83ms;
   border: none;
-  box-radius:0 0 5px 5px;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
   
   `;

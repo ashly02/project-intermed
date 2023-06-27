@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 
 function InterestPage() {
-  const col1 = ["Programming 🖥️", "Python ", "Java", "Data Science", "DBMS","CSS 🎨"];
-  const col2 = ["Cricket 🏏", "Football ⚽", "Athletics 🏃🏻‍♀🏃🏻‍♂", "Badminton 🏸", "Fitness 💪", "Gym 🏋🏻‍♂🏋🏻‍♀","Basketball ⛹‍♀⛹‍♂"];
-  const col3 = ["Music 🎼", "Dance 💃🏻🕺", "Arts 🎭", "Writing ✒", "Painting 🎨"];
-  const col4=  ["Violin 🎻","Piano 🎹","Guitar 🎸","Drums 🥁","Trumphets 🎺","Accordion 🪗"];
+  const col1 = ["Programming", "Python", "Java", "Data Science", "DBMS","React"];
+  const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Fitness", "Gym","Basketball"];
+  const col3 = ["Music", "Dance", "Arts ", "Writing ", "Painting"];
+  const col4=  ["Violin","Piano","Guitar","Drums","Trumphets","Accordion"];
   const [othersInput, setOthersInput] = useState("");
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
