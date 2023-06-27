@@ -172,12 +172,12 @@ const Profile = (props) => {
     }
   };
   return (
-    <>
+   
       <Container>
         <Widget>
       <CardBackground />
         <ArtCard>
-          <>
+          
           
             <Photo
               img
@@ -194,8 +194,11 @@ const Profile = (props) => {
               onChange={handleImageChange}
             />
             <Link>{props.user ? props.user.displayName : "there"}</Link>
-          </>
-          <>
+          
+          
+          {aboutText && (
+              <AboutText>{aboutText}</AboutText>
+            )}
             <SharedActor>
               <button onClick={() => toggleDropdown()}>
                 <img src="./images/ellipsis.svg" alt="" />
@@ -223,14 +226,12 @@ const Profile = (props) => {
               onChange={handleAboutInputChange}
             />
             <AddInterestButton type="submit" className="add-about-button">
-              Add
+              SUBMIT
             </AddInterestButton>
           </form>
 
         ) }
-         {aboutText && (
-              <div>{aboutText}</div>
-            )}
+        
             {interests && (
               <div>
                 <InterestsContainer className="interests-container">
@@ -289,12 +290,12 @@ const Profile = (props) => {
               
             )}
             
-          </>
+        
         </ArtCard>
         </Widget>
         <Posts />
       </Container>
-    </>
+   
   );
 };
 
@@ -303,5 +304,14 @@ const mapStateToProps = (state) => {
     user: state.userState.user,
   };
 };
+const AboutText = styled.div`
+  color: #000;
+  font-size: 16px;
+  font-weight:600;
+  margin-top:50px;
+  margin-left:-65px;
+  white-space: nowrap;
+  /* Add more styles as needed */
+`;
 
 export default connect(mapStateToProps)(Profile);
