@@ -72,7 +72,7 @@ const CustomProfile = () => {
                     <div className="post-div">
                         {posts && posts.length > 0 ? (
                             posts.map((val) => (
-                                <img src={val} alt="" height={"200px"} width={"200px"} />
+                                <img src={val} alt="" height={"230px"} width={"230px"} />
                             ))
                         ) : (
                             <p>No posts available</p>
