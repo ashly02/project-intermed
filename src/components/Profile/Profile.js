@@ -286,8 +286,6 @@ const Profile = (props) => {
                   )}
                    </InterestsContainer>
                 </div>
-                
-              
             )}
             
         

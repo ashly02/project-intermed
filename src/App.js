@@ -34,7 +34,7 @@ function App(props) {
             <Route path="/messaging" element={<Msg />} />
             <Route path="/profile" element={<Profile />} />
             <Route
-                path="/customprofile"
+                path="/customprofile/:slug"
                 element={<CustomProfile/>}
             />
           </Routes>
