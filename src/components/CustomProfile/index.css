@@ -13,14 +13,15 @@
     flex-direction: column;
     border-radius: 5px;
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 1rem;
+    
 }
 .image-div{
     height: 145px;
     width: 145px;
     border-radius: 100%;
+    margin-left: 1rem;
 }
 .post-section{
     width: 100%;
@@ -58,4 +59,13 @@ background-color: white;
     align-items: center;
     border-radius: 5px;
 background-color: white;
+}
+.profile-name{
+    margin-left:50px;
+    margin-right:40px;
+    width:900px;
+    margin-top:25px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 600;
 }

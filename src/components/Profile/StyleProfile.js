@@ -145,7 +145,7 @@ export const Link = styled.div`
   `;
   
   export const InterestsContainer = styled.div`
-  margin-right:0px
+  margin-right:0px;
   flex-direction:column;
   align-items:flex-start;
   justify-content:flex-start;

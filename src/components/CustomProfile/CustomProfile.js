@@ -61,7 +61,7 @@ const CustomProfile = () => {
         <div className="main-div">
             <div className="tab-content">
                 <img className="image-div" src={detail[0]?.photoURL} alt="" />
-                <p>{detail[0]?.displayName}</p>
+                <p className="profile-name">{detail[0]?.displayName}</p>
             </div>
             <div className="post-section">
                 <div className="post-section-content">

@@ -305,14 +305,8 @@ const mapStateToProps = (state) => {
     user: state.userState.user,
   };
 };
-const AboutText = styled.div`
-  color: #000;
-  font-size: 16px;
-  font-weight:600;
-  margin-top:50px;
-  margin-left:-65px;
-  white-space: nowrap;
-  /* Add more styles as needed */
-`;
+
 
 export default connect(mapStateToProps)(Profile);
+
+
