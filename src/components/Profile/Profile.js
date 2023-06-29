@@ -193,12 +193,12 @@ const Profile = (props) => {
               ref={fileInputRef}
               onChange={handleImageChange}
             />
-            <Link>{props.user ? props.user.displayName : "there"}</Link>
-          
+            <Link>{props.user ? props.user.displayName : "there"}
           
           {aboutText && (
               <AboutText>{aboutText}</AboutText>
             )}
+            
             <SharedActor>
               <button onClick={() => toggleDropdown()}>
                 <img src="./images/ellipsis.svg" alt="" />
@@ -231,7 +231,6 @@ const Profile = (props) => {
           </form>
 
         ) }
-        
             {interests && (
               <div>
                 <InterestsContainer className="interests-container">
@@ -260,11 +259,14 @@ const Profile = (props) => {
                       </InterestButton>
                     ))}
                   {interests.others &&
-                    interests.others.map((interest) => (
-                      <InterestButton key={interest}>
-                        {interest}
-                      </InterestButton>
-                    ))}
+                  interests.others
+                  .filter((interest) => interest !== "")
+                  .map((interest) => (
+                    <button key={interest} className="interest-button">
+                      {interest}
+                    </button>
+                  ))}
+                  
                   {showInputField && (
                     <AddInterestForm onSubmit={addNewInterest}>
                       <InterestInput
@@ -287,7 +289,7 @@ const Profile = (props) => {
                    </InterestsContainer>
                 </div>
             )}
-            
+            </Link>
         
         </ArtCard>
         </Widget>
@@ -306,8 +308,7 @@ const AboutText = styled.div`
   color: #000;
   font-size: 16px;
   font-weight:600;
-  margin-top:50px;
-  margin-left:-65px;
+  margin-top:10px;
   white-space: nowrap;
   /* Add more styles as needed */
 `;

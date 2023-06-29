@@ -202,11 +202,13 @@ const Leftside = (props) => {
                   </button>
                 ))}
               {interests.others &&
-                interests.others.map((interest) => (
-                  <button key={interest} className="interest-button">
-                    {interest}
-                  </button>
-                ))}
+                  interests.others
+                  .filter((interest) => interest !== "")
+                  .map((interest) => (
+                    <button key={interest} className="interest-button">
+                      {interest}
+                    </button>
+                  ))}
               {showInputField && (
                     <AddInterestForm onSubmit={addNewInterest}>
                       <InterestInput

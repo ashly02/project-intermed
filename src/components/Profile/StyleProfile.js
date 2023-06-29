@@ -75,6 +75,7 @@ export const SharedActor = styled.div`
     position: absolute;
     top: 0px;
     right: 12px;
+  
     background: transparent;
     border: none;
     outline: none;
@@ -133,32 +134,32 @@ export const Photo = styled.img`
 `;
 
 export const Link = styled.div`
-  margin-left:70px;
+  margin-left:50px;
+  margin-right:40px;
+  width:900px;
   margin-top:25px;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
+  
   `;
   
   export const InterestsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-left: -120px;
-  margin-top: 80px;
-  margin-right:80px
+  margin-right:0px
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
 `;
-  // CSS styling for the interest buttons
+
   export const InterestButton = styled.button`
   background-color: #fff;
   border: none;
   border-radius: 20px;
   padding: 4px 10px;
   margin: 8px;
-  width: 120px; 
+  width: 105px; 
   height: 40px;
   font-size: 14px;
-  text-transform: uppercase;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   cursor: pointer;
@@ -167,7 +168,7 @@ export const Link = styled.div`
   box-shadow: 0 0 0 1px #814df0, 0 0 0 3px #fff;
   &:hover {
     background-color: #814df0;
-    color: #fff;
+    color: #fff; 
     box-shadow: 0 0 0 2px #814df0, 0 0 0 4px #fff;
   }
 `;
