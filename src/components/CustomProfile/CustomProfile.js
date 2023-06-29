@@ -9,7 +9,8 @@ const CustomProfile = () => {
     const [detail, setDetail] = useState([])
     const { slug } = useParams()
     const { fetchPostDetails, postDetails, fetchVideoDetails, videoDetails } = useUser()
-
+    
+    const [interests, setInterests] = useState([]);
     const [posts, setPosts] = useState(null)
     const [videos, setVideos] = useState(null)
 
@@ -64,6 +65,44 @@ const CustomProfile = () => {
                 <div className="Link">
                 <p className="profile-name">{detail[0]?.displayName}</p>
                 <p className="profile-about">{detail[0]?.about}</p>
+                {interests && (
+              <div>
+                <div className="interests-container">
+                  {detail[0]?.interests.col1 &&
+                    detail[0]?.interests.col1.map((interest) => (
+                      <button className="interest-button" key={interest}>
+                        {interest}
+                      </button>
+                    ))}
+                  {detail[0]?.interests.col2 &&
+                    detail[0]?.interests.col2.map((interest) => (
+                      <button className="interest-button" key={interest}>
+                        {interest}
+                      </button>
+                    ))}
+                  {detail[0]?.interests.col3 &&
+                    detail[0]?.interests.col3.map((interest) => (
+                      <button className="interest-button" key={interest}>
+                        {interest}
+                      </button>
+                    ))}
+                  {detail[0]?.interests.col4 &&
+                    detail[0]?.interests.col4.map((interest) => (
+                      <button className="interest-button" key={interest}>
+                        {interest}
+                      </button>
+                    ))}
+                  {detail[0]?.interests.others &&
+                  detail[0]?.interests.others
+                  .filter((interest) => interest !== "")
+                  .map((interest) => (
+                    <button className="interest-button" key={interest} >
+                      {interest}
+                    </button>
+                  ))}
+                   </div>
+                </div>
+            )}
                 </div>
             </div>
             <div className="post-section">
