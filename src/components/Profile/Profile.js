@@ -19,7 +19,7 @@ import {
   SharedActor,
   EditModel,
   Widget,
-  AboutText
+  AboutText,
 } from "./StyleProfile";
 import Posts from "./Posts";
 

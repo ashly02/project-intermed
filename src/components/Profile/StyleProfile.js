@@ -145,10 +145,7 @@ export const Link = styled.div`
   `;
   
   export const InterestsContainer = styled.div`
-  margin-right:0px;
-  flex-direction:column;
-  align-items:flex-start;
-  justify-content:flex-start;
+
 `;
 
   export const InterestButton = styled.button`
@@ -203,11 +200,10 @@ export const AddInterestButton = styled.button`
   }
 `;
 export const AboutText = styled.div`
-  color: #000;
-  font-size: 16px;
-  font-weight:600;
-  margin-top:50px;
-  margin-left:-65px;
-  white-space: nowrap;
-  /* Add more styles as needed */
+color: #000;
+font-size: 16px;
+font-weight:600;
+margin-top:10px;
+white-space: nowrap;
+/* Add more styles as needed */
 `;
