@@ -75,10 +75,12 @@
 .profile-about{
     font-size: 20px;
     margin-top:15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 .Link{
     margin-left: 60px;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom: 10px;
 }
 .interest-button {
@@ -87,7 +89,7 @@
   border-radius: 20px;
   padding: 4px 10px;
   margin: 8px;
-  width:105px;/* Adjust the width as per your preference */
+  width:105px;
   height: 40px;
   font-size: 14px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
