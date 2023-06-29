@@ -9,11 +9,13 @@ import 'firebase/compat/storage';
 const firebaseConfig = {
   apiKey: "AIzaSyBCk3t_mgZTIOOnVcHDELmBonIra5_8xhg",
   authDomain: "cuco-jn.firebaseapp.com",
-  projectId: "cuco-jn",
+   projectId: "cuco-jn",
   storageBucket: "cuco-jn.appspot.com",
-  messagingSenderId: "448540034347",
+ messagingSenderId: "448540034347",
   appId: "1:448540034347:web:2058853c0957921b96316e"
-};
+ };
+
+
 
 
 
