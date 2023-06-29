@@ -189,7 +189,27 @@ display: flex;
 align-items: center;
 margin-top: 10px;
 `;
-
+export const InterestButton = styled.button`
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 10px;
+  margin: 8px;
+  width: 103px; 
+  height: 40px;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+  box-shadow: 0 0 0 1px #814df0, 0 0 0 3px #fff;
+  &:hover {
+    background-color: #814df0;
+    color: #fff; 
+    box-shadow: 0 0 0 2px #814df0, 0 0 0 4px #fff;
+  }
+`;
 export const InterestInput = styled.input`
 flex-grow: 1;
 padding: 8px;
@@ -215,4 +235,9 @@ outline: none;
 &:hover {
   background-color: #6339b4;
 }
+`;
+export const InterestsContainer = styled.div`
+display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
 `;

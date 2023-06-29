@@ -19,7 +19,7 @@ import {
   SharedActor,
   EditModel,
   Widget,
-  AboutText,
+  AboutText,TextArea
 } from "./StyleProfile";
 import Posts from "./Posts";
 
@@ -81,7 +81,7 @@ const Profile = (props) => {
   };
 
   const addNewInterest = (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault(); 
 
     if (newInterest) {
       const userRef = doc(db, "users", currentUser.uid);
@@ -93,9 +93,9 @@ const Profile = (props) => {
       })
         .then(() => {
           console.log("New interest added successfully.");
-          setNewInterest(""); // Resetting the new interest input field
-          setShowDropdown(false); // Closing the dropdown menu
-          setShowInputField(false); // Hide the input field after adding
+          setNewInterest(""); 
+          setShowDropdown(false); 
+          setShowInputField(false); 
         })
         .catch((error) => {
           console.log(error.message);
@@ -219,7 +219,7 @@ const Profile = (props) => {
             </SharedActor>
             {showAboutInput &&(
           <form onSubmit={addAbout}>
-            <InterestInput
+            <TextArea
               type="text"
               placeholder="Add about details.."
               className="about-input"
@@ -263,9 +263,9 @@ const Profile = (props) => {
                   interests.others
                   .filter((interest) => interest !== "")
                   .map((interest) => (
-                    <button key={interest} className="interest-button">
+                    <InterestButton key={interest} className="interest-button">
                       {interest}
-                    </button>
+                    </InterestButton>
                   ))}
                   
                   {showInputField && (
@@ -282,11 +282,7 @@ const Profile = (props) => {
                       </AddInterestButton>
                     </AddInterestForm>
                   )}
-                  {newInterest && (
-                    <InterestButton onClick={() => addNewInterest()}>
-                      {newInterest}
-                    </InterestButton>
-                  )}
+                 
                    </InterestsContainer>
                 </div>
             )}

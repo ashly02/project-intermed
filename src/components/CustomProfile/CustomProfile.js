@@ -121,7 +121,7 @@ const CustomProfile = () => {
                     <div className="videos-div">
                         {videos && videos.length > 0 ? (
                             videos.map((val) => (
-                                <video src={val} height={"230px"} width={"230px"} controls />
+                                <video src={val}  height={"180px"} width={"230px"} controls />
                             ))
                         ) : (
                             <p>No videos available</p>
