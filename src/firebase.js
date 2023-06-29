@@ -6,14 +6,13 @@ import 'firebase/compat/storage';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB0ZI-m84wyyLhA4KZ35R0ty4RF_Ct0Dj0",
-  authDomain: "poll-67c94.firebaseapp.com",
-  databaseURL: "https://poll-67c94-default-rtdb.firebaseio.com",
-  projectId: "poll-67c94",
-  storageBucket: "poll-67c94.appspot.com",
-  messagingSenderId: "409870212823",
-  appId: "1:409870212823:web:7469d3d220c652a491da92",
-  measurementId: "G-H6GBERMMK7"
+  apiKey: "AIzaSyB_0AehHIUusUTeUto7hhfEMEY4HoV7oho",
+  authDomain: "cusat-connects-jn.firebaseapp.com",
+  databaseURL: "https://cusat-connects-jn-default-rtdb.firebaseio.com",
+  projectId: "cusat-connects-jn",
+  storageBucket: "cusat-connects-jn.appspot.com",
+  messagingSenderId: "434949410119",
+  appId: "1:434949410119:web:c85bf570a4d55e6bb3d062"
 };
 
 
