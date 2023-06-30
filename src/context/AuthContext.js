@@ -36,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
   async function fetchPostDetails(email) {
     const docSnap = await getDocs(collection(db, "articles"));
     docSnap.forEach((doc) => {
-      if(doc.data().actor.description === email){
+      if(doc.data().actor.description === email && doc.data().shareImg!==""){
         postDetailsArray.push(doc.data().shareImg)
       }
     });

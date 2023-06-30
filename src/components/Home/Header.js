@@ -180,7 +180,7 @@ const Header = (props) => {
                 <Nav>
                     <NavListWrap>
                         <NavList className="active">
-                            <a>
+                            <a href="/home">
                                 <img src="/images/nav-home.svg" alt="" />
                                 <button className='b'>Home</button>
                             </a>

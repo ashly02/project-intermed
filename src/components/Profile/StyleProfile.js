@@ -11,7 +11,7 @@ export const EditModel = styled.ul`
   text-align: start;
   position: absolute;
   right: 5px;
-  top: 135px;
+  top: 20px;
   background-color: white;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 6px 9px rgb(0 0 0 / 20%);
   border-radius: 8px;
@@ -25,6 +25,7 @@ export const EditModel = styled.ul`
     gap: 8px;
     cursor: pointer;
     transition: 0.3s;
+    font-size:17px;
     &:hover {
       background-color: rgba(0, 0, 0, 0.08);
     }
@@ -60,7 +61,7 @@ export const SharedActor = styled.div`
     span {
       text-align: left;
       :first-child {
-        font-size: 14px;
+        font-size: 1px;
         font-weight: 700;
         color: rgba(0, 0, 0, 1);
       }
@@ -86,19 +87,18 @@ export const ArtCard = styled.div`
 
   display:flex;
   position:relative;
-  width:1250px;
+  width:81.5vw;
   margin-bottom: 80px;
   background-color: #fff;
   border-radius: 5px;
   transition: box-shadow 83ms;
   border: none;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
   
   `;
   export const Widget = styled.div`
 
   
-  width:1050px;
+  width:81.5vw;
   margin-bottom: 80px;
   margin-left: 125px;
   background-color: #fff;
@@ -112,7 +112,7 @@ export const CardBackground = styled.div`
   background-position: center;
   background-size: 462px;
   height: 124px;
-  width:1250px;
+  width:81.5vw;
   margin:auto;
   margin-top:10px;
   border-radius:5px;
@@ -138,23 +138,24 @@ export const Link = styled.div`
   margin-right:40px;
   width:900px;
   margin-top:25px;
-  font-size: 20px;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
-  
+  font-size:35px;
   `;
   
   export const InterestsContainer = styled.div`
-
+  margin-top:-3px;
+  margin-left:-10px;
 `;
 
   export const InterestButton = styled.button`
   background-color: #fff;
   border: none;
+  text-transform:uppercase;
   border-radius: 20px;
   padding: 4px 10px;
   margin: 8px;
-  width: 105px; 
+  width: 125px; 
   height: 40px;
   font-size: 14px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -176,11 +177,23 @@ export const AddInterestForm = styled.form`
 `;
 
 export const InterestInput = styled.input`
-  flex-grow: 1;
+  flex-grow:;
+  height:15px;
+  margin-bottom:10px;
   padding: 8px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 20px;
+`;
+
+export const TextArea = styled.textarea`
+flex-grow: 1;
+padding: 8px;
+font-size: 14px;
+border: 1px solid #ccc;
+border-radius: 20px;
+white-space: pre-wrap;
+overflow-wrap: break-word;
 `;
 
 export const AddInterestButton = styled.button`
@@ -190,6 +203,7 @@ export const AddInterestButton = styled.button`
   border-radius: 20px;
   padding: 8px 16px;
   margin-left: 8px;
+  margin-bottom:10px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -201,9 +215,9 @@ export const AddInterestButton = styled.button`
 `;
 export const AboutText = styled.div`
 color: #000;
-font-size: 16px;
-font-weight:600;
-margin-top:10px;
-white-space: nowrap;
-/* Add more styles as needed */
+font-size: 18px;
+font-weight: 300;
+margin-top: 10px;
+white-space: pre-wrap;
+word-wrap: break-word;
 `;
