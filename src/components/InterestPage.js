@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./InterestPage.css";
 import { useContext } from "react";
 import { db } from "../firebase";
-
+import Loader from "./Loader";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 
@@ -14,9 +14,17 @@ function InterestPage() {
   const [othersInput, setOthersInput] = useState("");
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(true);
   
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      
+      setLoading(false);
+      
+    }, 200); 
 
+    return () => clearTimeout(timer);
+  }, []);
   const handleOthersInputChange = (event) => {
     setOthersInput(event.target.value);
   };
@@ -27,7 +35,15 @@ function InterestPage() {
     console.log(`Checkbox ${id} checked: ${checked}`);
   };
 
-
+  if (loading) {
+    return (
+      
+        <div>
+          <Loader/>
+          </div>
+    
+    );
+  }
   const handleSubmit = () => {
     const words = othersInput.split(',');
     const trimmedWords = words.map((word) => word.trim());
@@ -35,7 +51,7 @@ function InterestPage() {
     console.log(trimmedWords)
 
     setOthersInput('');
-
+    setLoading(true);
     const atLeastOneChecked = col1.some((val) => document.getElementById(val).checked) ||
       col2.some((val) => document.getElementById(val).checked) ||
       col3.some((val) => document.getElementById(val).checked)||

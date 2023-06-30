@@ -30,7 +30,7 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (!userCredential.user.emailVerified) {
-        
+        setLoading(false);
         setErr("Please verify your email before logging in.");
       } else {
         
@@ -47,6 +47,7 @@ const Login = () => {
   };
 
   const handleRegisterClick = () => {
+    
     if (auth.currentUser) {
       alert("Please logout before registering.");
     } else {
