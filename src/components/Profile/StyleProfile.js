@@ -177,7 +177,7 @@ export const AddInterestForm = styled.form`
 `;
 
 export const InterestInput = styled.input`
-  flex-grow:;
+  flex-grow:1;
   height:15px;
   margin-bottom:10px;
   padding: 8px;

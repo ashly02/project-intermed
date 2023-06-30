@@ -22,7 +22,7 @@ import {
   AboutText,TextArea
 } from "./StyleProfile";
 import Posts from "./Posts";
-
+import Loader from "../Loader"
 const Profile = (props) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -143,7 +143,7 @@ const Profile = (props) => {
   if (loading) {
     return (
       <div>
-        <img src="./images/spin-loader.svg" width="200px" height="200px" />
+       <Loader/>
       </div>
     );
   }

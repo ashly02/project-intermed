@@ -14,12 +14,7 @@ import {
   CardBackground,
   Photo,
   Link,
-  Widget,
-  SharedActor,
-  EditModel,
-  AddInterestForm,
-  InterestInput,
-  AddInterestButton,InterestButton,InterestsContainer
+  InterestButton,InterestsContainer
 } from "./StyleLeftside";
 
 const Leftside = (props) => {
