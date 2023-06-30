@@ -16,7 +16,7 @@
     border: none; 
     flex-direction: row;
     display: flex;
-    height:250px;
+    height:auto;
 }
 .image-div{
     height: 205px;
