@@ -163,5 +163,6 @@ text-align:center;
 `;
 export const UploadText=styled.div`
 text-align:center;
+
 `;
 
