@@ -83,6 +83,16 @@ const Main = (props) => {
           </div>
           <div>
             <button>
+              <img src="/images/announcement-icon.svg" className="feed-images" alt="" />
+              <button
+                onClick={handleClick}
+                disabled={props.loading ? true : false}
+                className="uploading"
+              >
+                Announcement
+              </button>
+            </button>
+            <button>
               <img src="/images/photo-icon.svg" className="feed-images" alt="" />
               <button
                 onClick={handleClick}
@@ -91,8 +101,7 @@ const Main = (props) => {
               >
                 Photo
               </button>
-            </button>
-            <button>
+            </button> <button>
               <img src="/images/video-icon.svg" className="feed-images" alt="" />
               <button
                 onClick={handleClick}
