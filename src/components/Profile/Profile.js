@@ -3,15 +3,16 @@ import Pic from "../../img/photo.svg";
 import { useContext, useState, useEffect, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { auth, storage, db } from "../../firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import {
-  Container,InterestsContainer,InterestInput,InterestButton,AddInterestForm,AddInterestButton,
+  Container,
+  InterestsContainer,
+  InterestInput,
+  InterestButton,
+  AddInterestForm,
+  AddInterestButton,
   ArtCard,
   CardBackground,
   Photo,
@@ -19,10 +20,11 @@ import {
   SharedActor,
   EditModel,
   Widget,
-  AboutText,TextArea
+  AboutText,
+  TextArea,
 } from "./StyleProfile";
 import Posts from "./Posts";
-import Loader from "../Loader"
+import Loader from "../Loader";
 const Profile = (props) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -81,7 +83,7 @@ const Profile = (props) => {
   };
 
   const addNewInterest = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if (newInterest) {
       const userRef = doc(db, "users", currentUser.uid);
@@ -93,9 +95,9 @@ const Profile = (props) => {
       })
         .then(() => {
           console.log("New interest added successfully.");
-          setNewInterest(""); 
-          setShowDropdown(false); 
-          setShowInputField(false); 
+          setNewInterest("");
+          setShowDropdown(false);
+          setShowInputField(false);
         })
         .catch((error) => {
           console.log(error.message);
@@ -121,7 +123,9 @@ const Profile = (props) => {
               setUrl(url);
               updateProfile(auth.currentUser, { photoURL: url })
                 .then(() => {
-                  updateDoc(doc(db, "users", currentUser.uid), { photoURL: url })
+                  updateDoc(doc(db, "users", currentUser.uid), {
+                    photoURL: url,
+                  })
                     .then(() => {
                       console.log("User photoURL updated successfully.");
                     })
@@ -143,11 +147,10 @@ const Profile = (props) => {
   if (loading) {
     return (
       <div>
-       <Loader/>
+        <Loader />
       </div>
     );
   }
-  
 
   const handleAddAbout = () => {
     setShowAboutInput(true);
@@ -155,7 +158,6 @@ const Profile = (props) => {
   const handleAboutInputChange = (e) => {
     setAboutText(e.target.value);
   };
-  
 
   const addAbout = (e) => {
     e.preventDefault(); // Prevent form submission
@@ -173,13 +175,11 @@ const Profile = (props) => {
     }
   };
   return (
-   
+    <>
       <Container>
         <Widget>
-      <CardBackground />
-        <ArtCard>
-          
-          
+          <CardBackground />
+          <ArtCard>
             <Photo
               img
               src={url ? url : currentUser.photoURL}
@@ -194,105 +194,107 @@ const Profile = (props) => {
               ref={fileInputRef}
               onChange={handleImageChange}
             />
-            <Link>{props.user ? props.user.displayName : "there"}
-          
-          {aboutText && (
-              <AboutText>{aboutText}</AboutText>
-            )}
-            
-            <SharedActor>
-              <button onClick={() => toggleDropdown()}>
-                <img src="./images/ellipsis.svg" alt="" />
-              </button>
-              {showDropdown && (
-                <EditModel>
-                  <li onClick={() => handleAddInterestClick()}>
-                    <img src="/images/addicon.png" alt="" />
-                    <h6>Add new Interest</h6>
-                  </li>
-                  <li onClick={() => handleAddAbout()}>
-                    <img src="/images/addicon.png" alt="" />
-                    <h6>Add About</h6>
-                  </li>
-                </EditModel>
-              )}
-            </SharedActor>
-            {showAboutInput &&(
-          <form onSubmit={addAbout}>
-            <TextArea
-              type="text"
-              placeholder="Add about details.."
-              className="about-input"
-              value={aboutText}
-              onChange={handleAboutInputChange}
-            />
-            <AddInterestButton type="submit" className="add-about-button">
-              SUBMIT
-            </AddInterestButton>
-          </form>
+            <Link>
+              {props.user ? props.user.displayName : "there"}
 
-        ) }
-            {interests && (
-              <div>
-                <InterestsContainer className="interests-container">
-                  {interests.col1 &&
-                    interests.col1.map((interest) => (
-                      <InterestButton key={interest}>
-                        {interest}
-                      </InterestButton>
-                    ))}
-                  {interests.col2 &&
-                    interests.col2.map((interest) => (
-                      <InterestButton key={interest}>
-                        {interest}
-                      </InterestButton>
-                    ))}
-                  {interests.col3 &&
-                    interests.col3.map((interest) => (
-                      <InterestButton key={interest}>
-                        {interest}
-                      </InterestButton>
-                    ))}
-                  {interests.col4 &&
-                    interests.col4.map((interest) => (
-                      <InterestButton key={interest}>
-                        {interest}
-                      </InterestButton>
-                    ))}
-                  {interests.others &&
-                  interests.others
-                  .filter((interest) => interest !== "")
-                  .map((interest) => (
-                    <InterestButton key={interest} className="interest-button">
-                      {interest}
-                    </InterestButton>
-                  ))}
-                  
-                  {showInputField && (
-                    <AddInterestForm onSubmit={addNewInterest}>
-                      <InterestInput
-                        type="text"
-                        placeholder="Add new interest.."
-                        className="interest-input"
-                        value={newInterest}
-                        onChange={handleNewInterestChange}
-                      />
-                      <AddInterestButton type="submit" className="add-interest-button">
-                        Add
-                      </AddInterestButton>
-                    </AddInterestForm>
-                  )}
-                 
-                   </InterestsContainer>
+              {aboutText && <AboutText>{aboutText}</AboutText>}
+
+              <SharedActor>
+                <button onClick={() => toggleDropdown()}>
+                  <img src="./images/ellipsis.svg" alt="" />
+                </button>
+                {showDropdown && (
+                  <EditModel>
+                    <li onClick={() => handleAddInterestClick()}>
+                      <img src="/images/addicon.png" alt="" />
+                      <h6>Add new Interest</h6>
+                    </li>
+                    <li onClick={() => handleAddAbout()}>
+                      <img src="/images/addicon.png" alt="" />
+                      <h6>Add About</h6>
+                    </li>
+                  </EditModel>
+                )}
+              </SharedActor>
+              {showAboutInput && (
+                <form onSubmit={addAbout}>
+                  <TextArea
+                    type="text"
+                    placeholder="Add about details.."
+                    className="about-input"
+                    value={aboutText}
+                    onChange={handleAboutInputChange}
+                  />
+                  <AddInterestButton type="submit" className="add-about-button">
+                    SUBMIT
+                  </AddInterestButton>
+                </form>
+              )}
+              {interests && (
+                <div>
+                  <InterestsContainer className="interests-container">
+                    {interests.col1 &&
+                      interests.col1.map((interest) => (
+                        <InterestButton key={interest}>
+                          {interest}
+                        </InterestButton>
+                      ))}
+                    {interests.col2 &&
+                      interests.col2.map((interest) => (
+                        <InterestButton key={interest}>
+                          {interest}
+                        </InterestButton>
+                      ))}
+                    {interests.col3 &&
+                      interests.col3.map((interest) => (
+                        <InterestButton key={interest}>
+                          {interest}
+                        </InterestButton>
+                      ))}
+                    {interests.col4 &&
+                      interests.col4.map((interest) => (
+                        <InterestButton key={interest}>
+                          {interest}
+                        </InterestButton>
+                      ))}
+                    {interests.others &&
+                      interests.others
+                        .filter((interest) => interest !== "")
+                        .map((interest) => (
+                          <InterestButton
+                            key={interest}
+                            className="interest-button"
+                          >
+                            {interest}
+                          </InterestButton>
+                        ))}
+
+                    {showInputField && (
+                      <AddInterestForm onSubmit={addNewInterest}>
+                        <InterestInput
+                          type="text"
+                          placeholder="Add new interest.."
+                          className="interest-input"
+                          value={newInterest}
+                          onChange={handleNewInterestChange}
+                        />
+                        <AddInterestButton
+                          type="submit"
+                          className="add-interest-button"
+                        >
+                          Add
+                        </AddInterestButton>
+                      </AddInterestForm>
+                    )}
+                  </InterestsContainer>
                 </div>
-            )}
+              )}
             </Link>
-        
-        </ArtCard>
+          </ArtCard>
+          <Posts />
         </Widget>
-        <Posts />
       </Container>
-   
+    </>
   );
 };
 
@@ -302,7 +304,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 export default connect(mapStateToProps)(Profile);
-
-
