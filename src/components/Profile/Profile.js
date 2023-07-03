@@ -3,13 +3,13 @@ import Pic from "../../img/photo.svg";
 import { useContext, useState, useEffect, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { auth, storage, db } from "../../firebase";
-import { doc, updateDoc, onSnapshot } from "firebase/firestore";
-import { updateProfile } from "firebase/auth";
 import {
   ref,
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
+import { doc, updateDoc, onSnapshot } from "firebase/firestore";
+import { updateProfile } from "firebase/auth";
 import {
   Container,
   InterestsContainer,
@@ -24,7 +24,7 @@ import {
   SharedActor,
   EditModel,
   Widget,
-  AboutText, TextArea
+  AboutText,TextArea
 } from "./StyleProfile";
 import Posts from "./Posts";
 import Loader from "../Loader";
@@ -86,7 +86,8 @@ const Profile = (props) => {
   };
 
   const addNewInterest = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
+
     if (newInterest) {
       const userRef = doc(db, "users", currentUser.uid);
       updateDoc(userRef, {
@@ -125,7 +126,9 @@ const Profile = (props) => {
               setUrl(url);
               updateProfile(auth.currentUser, { photoURL: url })
                 .then(() => {
-                  updateDoc(doc(db, "users", currentUser.uid), { photoURL: url })
+                  updateDoc(doc(db, "users", currentUser.uid), {
+                    photoURL: url,
+                  })
                     .then(() => {
                       console.log("User photoURL updated successfully.");
                     })
@@ -151,7 +154,7 @@ const Profile = (props) => {
       </div>
     );
   }
-
+  
 
   const handleAddAbout = () => {
     setShowAboutInput(true);
@@ -175,29 +178,33 @@ const Profile = (props) => {
     }
   };
   return (
-    <Container>
-      <Widget>
-        <CardBackground />
+   
+      <Container>
+        <Widget>
+      <CardBackground />
         <ArtCard>
-          <Photo
-            img
-            src={url ? url : currentUser.photoURL}
-            alt={Pic}
-            onClick={handleImageClick}
-            style={{ cursor: "pointer" }}
-          />
-          <input
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            ref={fileInputRef}
-            onChange={handleImageChange}
-          />
-          <Link>
-            {props.user ? props.user.displayName : "there"}
-            {aboutText && (
+          
+          
+            <Photo
+              img
+              src={url ? url : currentUser.photoURL}
+              alt={Pic}
+              onClick={handleImageClick}
+              style={{ cursor: "pointer" }}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              ref={fileInputRef}
+              onChange={handleImageChange}
+            />
+            <Link>{props.user ? props.user.displayName : "there"}
+          
+          {aboutText && (
               <AboutText>{aboutText}</AboutText>
             )}
+            
             <SharedActor>
               <button onClick={() => toggleDropdown()}>
                 <img src="./images/ellipsis.svg" alt="" />
@@ -215,20 +222,21 @@ const Profile = (props) => {
                 </EditModel>
               )}
             </SharedActor>
-            {showAboutInput && (
-              <form onSubmit={addAbout}>
-                <TextArea
-                  type="text"
-                  placeholder="Add about details.."
-                  className="about-input"
-                  value={aboutText}
-                  onChange={handleAboutInputChange}
-                />
-                <AddInterestButton type="submit" className="add-about-button">
-                  SUBMIT
-                </AddInterestButton>
-              </form>
-            )}
+            {showAboutInput &&(
+          <form onSubmit={addAbout}>
+            <TextArea
+              type="text"
+              placeholder="Add about details.."
+              className="about-input"
+              value={aboutText}
+              onChange={handleAboutInputChange}
+            />
+            <AddInterestButton type="submit" className="add-about-button">
+              SUBMIT
+            </AddInterestButton>
+          </form>
+
+        ) }
             {interests && (
               <div>
                 <InterestsContainer className="interests-container">
@@ -257,14 +265,14 @@ const Profile = (props) => {
                       </InterestButton>
                     ))}
                   {interests.others &&
-                    interests.others
-                      .filter((interest) => interest !== "")
-                      .map((interest) => (
-                        <InterestButton key={interest} className="interest-button">
-                          {interest}
-                        </InterestButton>
-                      ))}
-
+                  interests.others
+                  .filter((interest) => interest !== "")
+                  .map((interest) => (
+                    <InterestButton key={interest} className="interest-button">
+                      {interest}
+                    </InterestButton>
+                  ))}
+                  
                   {showInputField && (
                     <AddInterestForm onSubmit={addNewInterest}>
                       <InterestInput
@@ -279,17 +287,17 @@ const Profile = (props) => {
                       </AddInterestButton>
                     </AddInterestForm>
                   )}
-
-                </InterestsContainer>
-              </div>
+                 
+                   </InterestsContainer>
+                </div>
             )}
-          </Link>
-
+            </Link>
+        
         </ArtCard>
-      </Widget>
-      <Posts />
-    </Container>
-
+        </Widget>
+        <Posts />
+      </Container>
+   
   );
 };
 
@@ -299,7 +307,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 export default connect(mapStateToProps)(Profile);
-
-
