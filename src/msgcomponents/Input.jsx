@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import Img from "../img/img.png";
 import InputEmoji from "react-input-emoji";
 import { Picker } from "emoji-mart";
-
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import {
@@ -24,7 +23,7 @@ const Input = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
   const handleEmojiSelect = (emoji) => {
-    setText(text + emoji.native); 
+    setText(text + emoji.native);
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -35,12 +34,9 @@ const Input = () => {
   const handleSend = async () => {
     if (img) {
       const storageRef = ref(storage, uuid());
-
       const uploadTask = uploadBytesResumable(storageRef, img);
-
       uploadTask.on(
         (error) => {
-          
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -94,7 +90,6 @@ const Input = () => {
         onKeyDown={handleKeyDown}
       />
       <div className="send">
-       
         {showEmojis && (
           <div className="emoji-picker">
             <Picker

@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import logo from './logo.png';
@@ -13,15 +13,14 @@ const Login = () => {
   const [loading, setLoading] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      
       setLoading(false);
-      
-    }, 200); 
-
+    }, 200);
     return () => clearTimeout(timer);
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
@@ -33,7 +32,7 @@ const Login = () => {
         setLoading(false);
         setErr("Please verify your email before logging in.");
       } else {
-        
+
         navigate("/home");
       }
     } catch (err) {
@@ -41,13 +40,12 @@ const Login = () => {
       setErr(err.message);
     }
   };
-  
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
   const handleRegisterClick = () => {
-    
     if (auth.currentUser) {
       alert("Please logout before registering.");
     } else {
@@ -56,14 +54,12 @@ const Login = () => {
   };
   if (loading) {
     return (
-      
-        <div>
-          <Loader/>
-          </div>
-    
+      <div>
+        <Loader />
+      </div>
     );
   }
- 
+
 
   return (
     <div className='main-login'>

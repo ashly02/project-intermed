@@ -12,12 +12,10 @@ const Chat = () => {
       <div className="chatInfo">
         <span>{data.user?.displayName}</span>
         <div className="chatIcons">
-          
-          
         </div>
       </div>
       <Messages />
-      <Input/>
+      <Input />
     </div>
   );
 };

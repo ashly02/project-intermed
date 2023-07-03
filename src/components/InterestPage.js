@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./InterestPage.css";
 import { useContext } from "react";
 import { db } from "../firebase";
@@ -7,21 +7,21 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 
 function InterestPage() {
-  const col1 = ["Programming", "Python", "Java", "Data Science", "DBMS","React"];
-  const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Fitness", "Gym","Basketball"];
+  const col1 = ["Programming", "Python", "Java", "Data Science", "DBMS", "React"];
+  const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Fitness", "Gym", "Basketball"];
   const col3 = ["Music", "Dance", "Arts ", "Writing ", "Painting"];
-  const col4=  ["Violin","Piano","Guitar","Drums","Trumphets","Accordion"];
+  const col4 = ["Violin", "Piano", "Guitar", "Drums", "Trumphets", "Accordion"];
   const [othersInput, setOthersInput] = useState("");
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      
+
       setLoading(false);
-      
-    }, 200); 
+
+    }, 200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -31,32 +31,28 @@ function InterestPage() {
 
   const handleCheckboxChange = (event) => {
     const { id, checked } = event.target;
-    
+
     console.log(`Checkbox ${id} checked: ${checked}`);
   };
 
   if (loading) {
     return (
-      
-        <div>
-          <Loader/>
-          </div>
-    
+      <div>
+        <Loader />
+      </div>
     );
   }
   const handleSubmit = () => {
     const words = othersInput.split(',');
     const trimmedWords = words.map((word) => word.trim());
-
     console.log(trimmedWords)
-
     setOthersInput('');
     setLoading(true);
     const atLeastOneChecked = col1.some((val) => document.getElementById(val).checked) ||
       col2.some((val) => document.getElementById(val).checked) ||
-      col3.some((val) => document.getElementById(val).checked)||
+      col3.some((val) => document.getElementById(val).checked) ||
       col4.some((val) => document.getElementById(val).checked)
-      const othersSpecified = othersInput.trim() !== "";
+    const othersSpecified = othersInput.trim() !== "";
 
     if (atLeastOneChecked || othersSpecified) {
       const dataToSave = {
@@ -74,7 +70,7 @@ function InterestPage() {
         .update({ interests: dataToSave })
         .then(() => {
           console.log("Interests data saved to user's database collection:", dataToSave);
-          navigate("/home"); 
+          navigate("/home");
         })
         .catch((error) => {
           console.error("Error saving interests data to user's database collection:", error);
@@ -151,18 +147,18 @@ function InterestPage() {
           ))}
         </div>
         <div className="centered-div ">
-        <input
-          className="others"
-          placeholder="Others, specify it...."
-          value={othersInput}
-          onChange={handleOthersInputChange}
-        />
-      </div>
-      <div className="submit-div">
-        <button className="bt-submit" onClick={handleSubmit}>
-          Submit
-        </button>
-      </div>
+          <input
+            className="others"
+            placeholder="Others, specify it...."
+            value={othersInput}
+            onChange={handleOthersInputChange}
+          />
+        </div>
+        <div className="submit-div">
+          <button className="bt-submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -36,8 +36,6 @@ const Main = (props) => {
           { name: props.user.displayName, email: props.user.email, photo: props.user.photoURL },
           ...likes,
         ];
-
-    // Update the likes in the database or API
     updateDoc(doc(db, "articles", articleId), {
       likes: updatedLikes,
     });
@@ -64,7 +62,6 @@ const Main = (props) => {
         setShowModal("close");
         break;
     }
-    
   };
 
   return (
@@ -72,17 +69,16 @@ const Main = (props) => {
       <Container>
         <ShareBox>
           <div>
-            {props.user && props.user.photoURL ? (
-              <img src={props.user.photoURL} />
-            ) : (
-              <img src="/images/user.svg" alt="" />
-            )}
-            <button onClick={handleClick} disabled={props.loading ? true : false}>
-              Start a post
-            </button>
+              {props.user && props.user.photoURL ? (
+                <img src={props.user.photoURL} />
+              ) : (
+                <img src="/images/user.svg" alt="" />
+              )}
+              <button onClick={handleClick} disabled={props.loading ? true : false}>
+                  Start a post
+              </button>
           </div>
-          <div>
-            
+          <div>      
             <button>
               <img src="/images/photo-icon.svg" className="feed-images" alt="" />
               <button
@@ -90,7 +86,7 @@ const Main = (props) => {
                 disabled={props.loading ? true : false}
                 className="uploading"
               >
-                Photo
+                  Photo
               </button>
             </button> 
             <button>
@@ -100,7 +96,7 @@ const Main = (props) => {
                 disabled={props.loading ? true : false}
                 className="uploading"
               >
-                Video
+                 Video
               </button>
             </button>
             <button>
@@ -110,7 +106,7 @@ const Main = (props) => {
                 disabled={props.loading ? true : false}
                 className="uploading"
               >
-                Announcement
+                  Announcement
               </button>
             </button>
             <button>

@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
-justify-content: center;
-align-items: center;
-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 export const EditModel = styled.ul`
   animation: fadeIn 0.5s;
@@ -33,8 +32,6 @@ export const EditModel = styled.ul`
       width: 18px;
       height: 20px;
     }
-  
- 
   }
 `;
 export const SharedActor = styled.div`
@@ -42,14 +39,12 @@ export const SharedActor = styled.div`
   flex-wrap: wrap;
   padding: 10px 12px 0;
   align-items: center;
-
   > a {
     img {
       width: 48px;
       height: 48px;
     }
   }
-
   > div {
     display: flex;
     flex-direction: column;
@@ -57,7 +52,6 @@ export const SharedActor = styled.div`
     flex-basis: 0;
     margin-left: 8px;
     overflow: hidden;
-
     span {
       text-align: left;
       :first-child {
@@ -71,12 +65,10 @@ export const SharedActor = styled.div`
       }
     }
   }
-
   > button {
     position: absolute;
     top: 0px;
-    right: 12px;
-  
+    right: 12px;  
     background: transparent;
     border: none;
     outline: none;
@@ -84,7 +76,6 @@ export const SharedActor = styled.div`
   }
 `;
 export const ArtCard = styled.div`
-
   display:flex;
   position:relative;
   width:81.5vw;
@@ -92,21 +83,17 @@ export const ArtCard = styled.div`
   background-color: #fff;
   border-radius: 5px;
   transition: box-shadow 83ms;
-  border: none;
-  
-  `;
-  export const Widget = styled.div`
-
-  
+  border: none;  
+`;
+export const Widget = styled.div`  
   width:81.5vw;
   margin-bottom: 80px;
   margin-left: 125px;
   background-color: #fff;
   border-radius: 5px;
   transition: box-shadow 83ms;
-  border: none;  
-  
-  `;
+  border: none;    
+`;
 export const CardBackground = styled.div`
   background: url("/images/16389946_5739877.jpg");
   background-position: center;
@@ -118,7 +105,6 @@ export const CardBackground = styled.div`
   border-radius:5px;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
 `;
-
 export const Photo = styled.img`
   box-shadow: none;
   width: 180px;
@@ -132,7 +118,6 @@ export const Photo = styled.img`
   margin: -85px auto 12px 100px;
   border-radius: 50%;
 `;
-
 export const Link = styled.div`
   margin-left:50px;
   margin-right:40px;
@@ -141,14 +126,12 @@ export const Link = styled.div`
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
   font-size:35px;
-  `;
-  
-  export const InterestsContainer = styled.div`
+`;
+export const InterestsContainer = styled.div`
   margin-top:-3px;
   margin-left:-10px;
 `;
-
-  export const InterestButton = styled.button`
+export const InterestButton = styled.button`
   background-color: #fff;
   border: none;
   text-transform:uppercase;
@@ -175,7 +158,6 @@ export const AddInterestForm = styled.form`
   align-items: center;
   margin-top: 10px;
 `;
-
 export const InterestInput = styled.input`
   flex-grow:1;
   height:15px;
@@ -185,7 +167,6 @@ export const InterestInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 20px;
 `;
-
 export const TextArea = styled.textarea`
 flex-grow: 1;
 padding: 8px;
@@ -195,7 +176,6 @@ border-radius: 20px;
 white-space: pre-wrap;
 overflow-wrap: break-word;
 `;
-
 export const AddInterestButton = styled.button`
   background-color: #814df0;
   color: #fff;
@@ -208,7 +188,6 @@ export const AddInterestButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s;
   outline: none;
-
   &:hover {
     background-color: #6339b4;
   }

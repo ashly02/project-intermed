@@ -1,20 +1,20 @@
-import { SET_LOADING_STATUS,GET_ARTICLES } from "../actions/actionType";
-export const initState={
-    articles:[],
-    loading:false,
+import { SET_LOADING_STATUS, GET_ARTICLES } from "../actions/actionType";
+export const initState = {
+    articles: [],
+    loading: false,
 };
 
-const articleReducer=(state=initState,action)=>{
-    switch(action.type){
+const articleReducer = (state = initState, action) => {
+    switch (action.type) {
         case GET_ARTICLES:
-            return{
+            return {
                 ...state,
-                articles:action.payload,
+                articles: action.payload,
             }
         case SET_LOADING_STATUS:
-            return{
+            return {
                 ...state,
-                loading:action.status,
+                loading: action.status,
             };
         default:
             return state;

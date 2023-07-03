@@ -1,4 +1,4 @@
-import {auth,provider,storage} from "../firebase";
+import {auth,storage} from "../firebase";
 import {db} from '../firebase';
 import { SET_USER,SET_LOADING_STATUS,GET_ARTICLES} from "./actionType";
 
@@ -16,19 +16,6 @@ export const getArticles=(payload)=>({
     type:GET_ARTICLES,
     payload: payload,
 });
-
-
-export function signInAPI(){
-    return (dispatch)=>{
-        auth
-        .signInWithPopup(provider)
-        .then((payload)=>{
-            console.log(payload.user);
-          //dispatch(setUser(payload.user));
-        })
-        .catch((error)=>alert(error.message));
-    };
-}
 
 export function getUserAuth(){
     return (dispatch)=>{

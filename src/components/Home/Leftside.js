@@ -87,8 +87,6 @@ const Leftside = (props) => {
     }
   }, [currentUser, image]);
 
-
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -153,9 +151,7 @@ const Leftside = (props) => {
                     <InterestButton key={interest} className="interest-button">
                       {interest}
                     </InterestButton>
-                  ))}
-             
-            
+                  ))}                  
              </InterestsContainer>
           </div>
         )}
