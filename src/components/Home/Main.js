@@ -13,8 +13,7 @@ import {
   Description,
   SharedImg,
   SocialCounts,
-  SocialActions,
-  Container,
+  SocialActions,Container,
   ShareBox,
   Content,
   Article
