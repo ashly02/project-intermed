@@ -3,12 +3,12 @@ import Add from "../../img/addpic.png"
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { auth, db, storage } from "../../firebase"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from 'react-router-dom';
 import logo from './logo.png';
 import './Signup.css'
-import showImage from "./showpassword.svg" ;
-import hideImage from "./hidepassword.svg" ;
+import showImage from "./showpassword.svg";
+import hideImage from "./hidepassword.svg";
 
 const Signup = () => {
   const [err, setErr] = useState(false)
@@ -25,24 +25,22 @@ const Signup = () => {
     const allowedDomains = ['ug.cusat.ac.in', 'pg.cusat.ac.in', 'cusat.ac.in'];
     const emailParts = email.split('@');
     const emailDomain = emailParts[1];
-  
-    // Check if the username is already taken
+    if (!allowedDomains.includes(emailDomain)) {
+      alert('Invalid email domain!');
+      return;
+    }
+   
     const usernameTaken = await isUsernameTaken(displayName);
     if (usernameTaken) {
       alert('Username already taken. Please choose a different username.');
       return;
     }
-  
-    if (!allowedDomains.includes(emailDomain)) {
-      alert('Invalid email domain!');
-      return;
-    }
+
+    
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-    
       const storageRef = ref(storage, displayName);
       const uploadTask = uploadBytesResumable(storageRef, file);
-    
       uploadTask.on(
         (error) => {
           alert('Error uploading avatar. Please try again.')
@@ -55,21 +53,17 @@ const Signup = () => {
                 displayName,
                 photoURL: downloadURL,
               });
-    
+
               await setDoc(doc(db, "users", res.user.uid), {
                 uid: res.user.uid,
                 displayName,
                 email,
                 photoURL: downloadURL,
               });
-    
               await setDoc(doc(db, "userChats", res.user.uid), {});
-    
-              await sendEmailVerification(res.user); // send email verification
-    
-              setIsEmailSent(true); // set state to indicate that email was sent
+              await sendEmailVerification(res.user); 
+              setIsEmailSent(true); 
               alert('Please verify your email and refresh the page.')
-    
             } catch (err) {
               alert('Error creating user. Please try again.')
               console.log(err);
@@ -95,7 +89,7 @@ const Signup = () => {
           navigate("/interest");
         }
       }
-      
+
     });
     return unsubscribe;
   }, [navigate]);
@@ -103,7 +97,7 @@ const Signup = () => {
     const usersSnapshot = await db.collection('users').where('displayName', '==', username).get();
     return !usersSnapshot.empty;
   };
-  
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
     console.log(showPassword)

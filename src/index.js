@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from "./store";
 import { AuthContextProvider } from './context/AuthContext';
 import { ChatContextProvider } from './context/ChatContext';
@@ -11,13 +11,13 @@ import { ChatContextProvider } from './context/ChatContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AuthContextProvider>
-  <ChatContextProvider>
-  <React.StrictMode>
+    <ChatContextProvider>
+      <React.StrictMode>
         <Provider store={store}>
-    <App />
-    </Provider>
-  </React.StrictMode>
-  </ChatContextProvider>
+          <App />
+        </Provider>
+      </React.StrictMode>
+    </ChatContextProvider>
   </AuthContextProvider>
 );
 

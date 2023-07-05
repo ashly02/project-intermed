@@ -6,13 +6,15 @@ import 'firebase/compat/storage';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCGGCdme3vRkDjgBP81DJS4Kr8lXDYLr_w",
-  authDomain: "ipname-b28da.firebaseapp.com",
-  projectId: "ipname-b28da",
-  storageBucket: "ipname-b28da.appspot.com",
-  messagingSenderId: "885011538622",
-  appId: "1:885011538622:web:3f6cfd9de456cbf363b4ef"
+  apiKey: "AIzaSyAK1NS70cN9h4tJ4AR1X9MIZ-RNmV-iEYg",
+  authDomain: "cusatconnects.firebaseapp.com",
+  projectId: "cusatconnects",
+  storageBucket: "cusatconnects.appspot.com",
+  messagingSenderId: "795651425972",
+  appId: "1:795651425972:web:9fb1c5d8be374a260139e1",
+  measurementId: "G-MLQ9XS1511"
 };
+
 
 firebase.initializeApp(firebaseConfig);
 
@@ -21,5 +23,5 @@ const db = firebase.firestore();
 const storage = firebase.storage();
 const provider = new firebase.auth.GoogleAuthProvider();
 
-export { auth, db, storage,provider };
+export { auth, db, storage, provider };
 export default firebase;
