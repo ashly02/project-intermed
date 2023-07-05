@@ -6,15 +6,14 @@ import 'firebase/compat/storage';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAK1NS70cN9h4tJ4AR1X9MIZ-RNmV-iEYg",
-  authDomain: "cusatconnects.firebaseapp.com",
-  projectId: "cusatconnects",
-  storageBucket: "cusatconnects.appspot.com",
-  messagingSenderId: "795651425972",
-  appId: "1:795651425972:web:9fb1c5d8be374a260139e1",
-  measurementId: "G-MLQ9XS1511"
+  apiKey: "AIzaSyDDrxwpQd61fJEweR-N441U2sIN1lIKK6Y",
+  authDomain: "mini-7daca.firebaseapp.com",
+  projectId: "mini-7daca",
+  storageBucket: "mini-7daca.appspot.com",
+  messagingSenderId: "945719089677",
+  appId: "1:945719089677:web:c266528ecbca62e8109344",
+  measurementId: "G-YZGFSTDND7"
 };
-
 
 firebase.initializeApp(firebaseConfig);
 
