@@ -4,7 +4,14 @@ import { connect } from "react-redux";
 import { getArticlesAPI } from "../../actions";
 import ReactPlayer from "react-player";
 
-import { SharedImg, Container, Content, Article } from "./StylePosts";
+import {
+  SharedImg,
+  Container,
+  Content,
+  Article,
+  SharedVid,
+  Title,
+} from "./StylePosts";
 
 const Posts = (props) => {
   const [showModal, setShowModal] = useState("close");
@@ -25,23 +32,15 @@ const Posts = (props) => {
   return (
     <>
       <Container>
+        <Title>Photos</Title>
         <Content>
           {props.loading && <img src="./images/spin-loader.svg" />}
           {props.articles.length > 0 &&
             props.articles.map((article, key) => (
               <Article key={key} img={article.shareImg}>
-                <SharedImg >
-                  {!article.shareImg && article.video ? (
-                    <ReactPlayer
-                      width="100%"
-                      height="100%" // Set the height to the desired value, e.g., "200px"
-                      url={article.video}
-                      controls={true}
-                    />
-                  ) : (
-                    article.shareImg && (
-                      <img src={article.shareImg} alt="Post" />
-                    )
+                <SharedImg>
+                  {article.shareImg && (
+                    <img src={article.shareImg} alt="Post" />
                   )}
                 </SharedImg>
               </Article>
@@ -49,6 +48,26 @@ const Posts = (props) => {
         </Content>
 
         {/* <PostModal showModal={showModal} handleClick={handleClick} /> */}
+      </Container>
+      <Container>
+        {props.articles.some((article) => article.video) && (
+          <Title>Videos</Title>
+        )}
+        <Content>
+          {props.articles.length > 0 &&
+            props.articles.map((article, key) => (
+              <SharedVid>
+                {article.video && (
+                  <ReactPlayer
+                    width="100%"
+                    height="100%" // Set the height to the desired value, e.g., "200px"
+                    url={article.video}
+                    controls={true}
+                  />
+                )}
+              </SharedVid>
+            ))}
+        </Content>
       </Container>
     </>
   );
