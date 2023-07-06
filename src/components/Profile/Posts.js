@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import { getArticlesAPI } from "../../actions";
 import ReactPlayer from "react-player";
 
-import { SharedImg, Container, Content, Article, ArtCard } from "./StylePosts";
+import { SharedImg, Container, Content, Article } from "./StylePosts";
 
 const Posts = (props) => {
   const [showModal, setShowModal] = useState("close");
 
   useEffect(() => {
-    props.getArticles()
+    props.getArticles();
   }, []);
 
   const handleClick = (e) => {
@@ -25,34 +25,30 @@ const Posts = (props) => {
   return (
     <>
       <Container>
-        <ArtCard>
-          <Content>
-            {props.loading && <img src="./images/spin-loader.svg" />}
-            {props.articles.length > 0 &&
-              props.articles.map((article, key) => (
-                <Article key={key}>
-                  <SharedImg>
-                    <a>
-                      {!article.shareImg && article.video ? (
-                        <ReactPlayer
-                          width="100%"
-                          height="100%" // Set the height to the desired value, e.g., "200px"
-                          url={article.video}
-                          controls={true}
-                        />
-                      ) : (
-                        article.shareImg && (
-                          <img src={article.shareImg} alt="Post" />
-                        )
-                      )}
-                    </a>
-                  </SharedImg>
-                </Article>
-              ))}
-          </Content>
+        <Content>
+          {props.loading && <img src="./images/spin-loader.svg" />}
+          {props.articles.length > 0 &&
+            props.articles.map((article, key) => (
+              <Article key={key} img={article.shareImg}>
+                <SharedImg >
+                  {!article.shareImg && article.video ? (
+                    <ReactPlayer
+                      width="100%"
+                      height="100%" // Set the height to the desired value, e.g., "200px"
+                      url={article.video}
+                      controls={true}
+                    />
+                  ) : (
+                    article.shareImg && (
+                      <img src={article.shareImg} alt="Post" />
+                    )
+                  )}
+                </SharedImg>
+              </Article>
+            ))}
+        </Content>
 
-          <PostModal showModal={showModal} handleClick={handleClick} />
-        </ArtCard>
+        {/* <PostModal showModal={showModal} handleClick={handleClick} /> */}
       </Container>
     </>
   );
