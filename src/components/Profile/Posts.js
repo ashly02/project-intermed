@@ -10,7 +10,7 @@ import {
   Content,
   Article,
   SharedVid,
-  Title,
+  Title,VideoArticle
 } from "./StylePosts";
 
 const Posts = (props) => {
@@ -32,7 +32,9 @@ const Posts = (props) => {
   return (
     <>
       <Container>
-        <Title>Photos</Title>
+      {props.articles.some((article) => article.shareImg) && (
+          <Title>Photos</Title>
+        )}
         <Content>
           {props.loading && <img src="./images/spin-loader.svg" />}
           {props.articles.length > 0 &&
@@ -57,6 +59,7 @@ const Posts = (props) => {
         <Content>
           {props.articles.length > 0 &&
             props.articles.map((article, key) => (
+              <VideoArticle key={key} vid={article.video}>
               <SharedVid>
                 {article.video && (
                   <ReactPlayer
@@ -67,6 +70,8 @@ const Posts = (props) => {
                   />
                 )}
               </SharedVid>
+
+              </VideoArticle>
             ))}
         </Content>
       </Container>

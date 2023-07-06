@@ -24,6 +24,13 @@ export const Article = styled.div`
   display: ${(props) => (props.img ? "block" : "none")};
 `;
 
+export const VideoArticle = styled.div`
+  // background-color: #f0f2f5;
+  border-radius: 10px;
+  overflow: hidden;
+  display: ${(props) => (props.vid ? "block" : "none")};
+`;
+
 export const SharedImg = styled.div`
   width: 100%;
   // height: 0;
