@@ -27,15 +27,26 @@ export const Article = styled.div`
   display: ${(props) => (props.img ? "block" : "none")};
 `;
 
+export const VideoArticle = styled.div`
+  // background-color: #f0f2f5;
+  border-radius: 10px;
+  overflow: hidden;
+  display: ${(props) => (props.vid ? "block" : "none")};
+`;
+
 export const SharedImg = styled.div`
   
   // height: 0;
   padding-top: 100%;
   margin:8px;
-  margin-bottom:-20px;
+  margin-bottom:-30px;
   position: relative;
   cursor: pointer;
-  
+  transition: box-shadow 0.3s ease; /* Added transition property */
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0.0, 0.2); /* Added box-shadow on hover */
+  }
   
   img {
     object-fit:cover;
@@ -45,6 +56,7 @@ export const SharedImg = styled.div`
     position: absolute;
     top: 0;
     left: 0;
+    
   }
 `;
 export const SharedVid = styled.div`

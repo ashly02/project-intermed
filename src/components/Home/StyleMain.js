@@ -7,7 +7,7 @@ export const Container = styled.div`
     width: 550px;
 }
   @media (min-width: 1024px) {
-    width: 850px;
+    width: 65vw;
 }
 `;
 
