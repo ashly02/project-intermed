@@ -13,8 +13,7 @@ import {
   Description,
   SharedImg,
   SocialCounts,
-  SocialActions,
-  Container,
+  SocialActions,Container,
   ShareBox,
   Content,
   Article
@@ -109,12 +108,7 @@ const Main = (props) => {
                   Announcement
               </button>
             </button>
-            <button>
-              <img src="/images/poll-icon.svg" className="feed-images" alt="" />
-              <button className="uploading">
-                Poll
-              </button>
-            </button>
+            
           </div>
         </ShareBox>
         <Content>

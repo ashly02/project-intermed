@@ -19,7 +19,7 @@ const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
   const [showEmojis, setShowEmojis] = useState(false);
-  console.log(setShowEmojis)
+
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
   const handleEmojiSelect = (emoji) => {

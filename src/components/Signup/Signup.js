@@ -25,7 +25,10 @@ const Signup = () => {
     const allowedDomains = ['ug.cusat.ac.in', 'pg.cusat.ac.in', 'cusat.ac.in'];
     const emailParts = email.split('@');
     const emailDomain = emailParts[1];
-
+    if (!allowedDomains.includes(emailDomain)) {
+      alert('Invalid email domain!');
+      return;
+    }
    
     const usernameTaken = await isUsernameTaken(displayName);
     if (usernameTaken) {
@@ -33,10 +36,7 @@ const Signup = () => {
       return;
     }
 
-    if (!allowedDomains.includes(emailDomain)) {
-      alert('Invalid email domain!');
-      return;
-    }
+    
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       const storageRef = ref(storage, displayName);
