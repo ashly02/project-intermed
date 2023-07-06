@@ -94,7 +94,8 @@ export const ArtCard = styled.div`
   
   width:81.5vw;
   margin-bottom: 80px;
-  margin-left: 125px;
+  // margin-left: 125px;
+  margin:auto;
   background-color: #fff;
   border-radius: 5px;
   transition: box-shadow 83ms;
