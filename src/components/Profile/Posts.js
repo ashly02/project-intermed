@@ -53,6 +53,7 @@ const Posts = (props) => {
         {props.articles.some((article) => article.video) && (
           <Title>Videos</Title>
         )}
+        
         <Content>
           {props.articles.length > 0 &&
             props.articles.map((article, key) => (
