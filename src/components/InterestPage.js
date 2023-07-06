@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 
 function InterestPage() {
-  const col1 = ["Programming", "Python", "Java", "Data Science", "DBMS", "React"];
-  const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Fitness", "Gym", "Basketball"];
-  const col3 = ["Music", "Dance", "Arts ", "Writing ", "Painting"];
-  const col4 = ["Violin", "Piano", "Guitar", "Drums", "Trumphets", "Accordion"];
+  const col1 = ["Python", "Java", "Data Science", "DBMS", "React","C/C++","Ruby","DSA","Web Development","Programming"];
+  const col2 = ["Cricket", "Football", "Athletics", "Badminton", "Boxing", "Gym", "Basketball","Tennis","Volleyball","Gymnastics"];
+  const col3 = ["Music", "Dance", "Arts ", "Writing ", "Painting","Drawing","Photography","Design","Editing","Crafts"];
+  const col4 = ["Violin", "Piano", "Guitar", "Drums", "Trumphets", "Accordion","Veena","Sitar","Tabla","Keyboard","Harp"];
   const [othersInput, setOthersInput] = useState("");
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -87,6 +87,7 @@ function InterestPage() {
       </div>
       <div className="interest-div">
         <div className="inside-div">
+          <p className="heading">COMPUTER-SCIENCE</p>
           {col1.map((val) => (
             <div className="mx-3 form-check" key={val}>
               <input
@@ -102,6 +103,7 @@ function InterestPage() {
           ))}
         </div>
         <div className="inside-div ">
+        <p className="heading">SPORTS</p>
           {col2.map((val) => (
             <div className="mx-3 form-check" key={val}>
               <input
@@ -117,6 +119,7 @@ function InterestPage() {
           ))}
         </div>
         <div className="inside-div ">
+        <p className="heading">CREATIVITY</p>
           {col3.map((val) => (
             <div className="mx-3 form-check" key={val}>
               <input
@@ -132,6 +135,7 @@ function InterestPage() {
           ))}
         </div>
         <div className="inside-div ">
+        <p className="heading">INSTRUMENTS</p>
           {col4.map((val) => (
             <div className="mx-3 form-check" key={val}>
               <input

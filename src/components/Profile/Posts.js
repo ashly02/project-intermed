@@ -10,7 +10,7 @@ const Posts = (props) => {
   const [showModal, setShowModal] = useState("close");
 
   useEffect(() => {
-    props.getArticles();
+    props.getArticles()
   }, []);
 
   const handleClick = (e) => {

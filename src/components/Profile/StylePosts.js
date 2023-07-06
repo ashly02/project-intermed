@@ -19,7 +19,7 @@ export const CommonCard = styled.div`
 export const ArtCard = styled.div`
   display: flex;
   position: relative;
-  width: 1250px;
+  width: 81vw;
   margin-top: 80px;
   margin-left: 125px;
   background-color: #fff;

@@ -6,13 +6,12 @@ import 'firebase/compat/storage';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDDrxwpQd61fJEweR-N441U2sIN1lIKK6Y",
-  authDomain: "mini-7daca.firebaseapp.com",
-  projectId: "mini-7daca",
-  storageBucket: "mini-7daca.appspot.com",
-  messagingSenderId: "945719089677",
-  appId: "1:945719089677:web:c266528ecbca62e8109344",
-  measurementId: "G-YZGFSTDND7"
+  apiKey: "AIzaSyBZuRdbsMHBt-WDJomle9Xkm38m_0A13lU",
+  authDomain: "last-cuco.firebaseapp.com",
+  projectId: "last-cuco",
+  storageBucket: "last-cuco.appspot.com",
+  messagingSenderId: "670566848845",
+  appId: "1:670566848845:web:0e366751bde67232953f04"
 };
 
 
