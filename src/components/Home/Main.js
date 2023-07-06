@@ -108,12 +108,7 @@ const Main = (props) => {
                   Announcement
               </button>
             </button>
-            <button>
-              <img src="/images/poll-icon.svg" className="feed-images" alt="" />
-              <button className="uploading">
-                Poll
-              </button>
-            </button>
+            
           </div>
         </ShareBox>
         <Content>

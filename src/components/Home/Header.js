@@ -35,7 +35,7 @@ const Header = (props) => {
 
     const { fetchDetails, allUserDetails } = useUser();
     const [allDetails, setAllDetails] = useState(null)
-    console.log(allDetails);
+    console.log("all detail");
     const history = useNavigate();
     const [searchKey, setSearchKey] = useState('');
     const handleSearchKeyChange = (event) => {

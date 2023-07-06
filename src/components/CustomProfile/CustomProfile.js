@@ -54,7 +54,7 @@ const CustomProfile = () => {
       setVideos(videoDetails);
     }, [detail, fetchPostDetails, fetchVideoDetails, postDetails, videoDetails]);
 
-    console.log(postDetails);
+    console.log("continous fetching");
 
     return (
         <div className="main-div">
