@@ -4,7 +4,12 @@ export const Container = styled.div`
   width: 81.5vw;
   margin: auto;
 `;
-
+export const Title = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  margin: 10px;
+`;
 export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,7 +18,7 @@ export const Content = styled.div`
 `;
 
 export const Article = styled.div`
-  background-color: #f0f2f5;
+  // background-color: #f0f2f5;
   border-radius: 10px;
   overflow: hidden;
   display: ${(props) => (props.img ? "block" : "none")};
@@ -21,7 +26,7 @@ export const Article = styled.div`
 
 export const SharedImg = styled.div`
   width: 100%;
-  height: 0;
+  // height: 0;
   padding-top: 100%;
   position: relative;
   cursor: pointer;
@@ -34,4 +39,11 @@ export const SharedImg = styled.div`
     top: 0;
     left: 0;
   }
+`;
+export const SharedVid = styled.div`
+  width: 100%;
+  // height: 0;
+  // padding-top: 100%;
+  position: relative;
+  cursor: pointer;
 `;
