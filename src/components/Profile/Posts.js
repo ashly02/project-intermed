@@ -30,9 +30,9 @@ const Posts = (props) => {
   };
 
   return (
-    <>
+    <><Title>Photos</Title>
       <Container>
-        <Title>Photos</Title>
+        
         <Content>
           {props.loading && <img src="./images/spin-loader.svg" />}
           {props.articles.length > 0 &&
@@ -47,16 +47,18 @@ const Posts = (props) => {
             ))}
         </Content>
 
-        {/* <PostModal showModal={showModal} handleClick={handleClick} /> */}
+
       </Container>
-      <Container>
+      
+     
         {props.articles.some((article) => article.video) && (
           <Title>Videos</Title>
         )}
-        
+         <Container>
         <Content>
           {props.articles.length > 0 &&
             props.articles.map((article, key) => (
+              
               <SharedVid>
                 {article.video && (
                   <ReactPlayer

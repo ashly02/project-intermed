@@ -82,7 +82,7 @@ export const ArtCard = styled.div`
   display:flex;
   position:relative;
   width:81.5vw;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   background-color: #fff;
   border-radius: 5px;
   transition: box-shadow 83ms;
