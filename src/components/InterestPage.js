@@ -14,17 +14,7 @@ function InterestPage() {
   const [othersInput, setOthersInput] = useState("");
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-
-      setLoading(false);
-
-    }, 200);
-
-    return () => clearTimeout(timer);
-  }, []);
+  
   const handleOthersInputChange = (event) => {
     setOthersInput(event.target.value);
   };
@@ -35,26 +25,19 @@ function InterestPage() {
     console.log(`Checkbox ${id} checked: ${checked}`);
   };
 
-  if (loading) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  }
+  
   const handleSubmit = () => {
     const words = othersInput.split(',');
     const trimmedWords = words.map((word) => word.trim());
     console.log(trimmedWords)
     setOthersInput('');
-    setLoading(true);
     const atLeastOneChecked = col1.some((val) => document.getElementById(val).checked) ||
       col2.some((val) => document.getElementById(val).checked) ||
       col3.some((val) => document.getElementById(val).checked) ||
       col4.some((val) => document.getElementById(val).checked)
     const othersSpecified = othersInput.trim() !== "";
 
-    if (atLeastOneChecked || othersSpecified) {
+   
       const dataToSave = {
         col1: col1.filter((val) => document.getElementById(val).checked),
         col2: col2.filter((val) => document.getElementById(val).checked),
@@ -75,9 +58,7 @@ function InterestPage() {
         .catch((error) => {
           console.error("Error saving interests data to user's database collection:", error);
         });
-    } else {
-      alert("Please select at least one interest or specify in 'Others' before submitting.");
-    }
+     
   };
 
   return (

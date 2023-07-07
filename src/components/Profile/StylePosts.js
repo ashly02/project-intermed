@@ -39,7 +39,6 @@ export const SharedImg = styled.div`
   // height: 0;
   padding-top: 100%;
   margin:8px;
-  margin-bottom:-30px;
   position: relative;
   cursor: pointer;
   transition: box-shadow 0.3s ease; /* Added transition property */
@@ -49,10 +48,9 @@ export const SharedImg = styled.div`
   }
   
   img {
-    object-fit:cover;
+    OBJECT-FIT:fill;
     width:100%;
-    height:50vh;
-    border-radius:10px;
+    height:100%;
     position: absolute;
     top: 0;
     left: 0;
